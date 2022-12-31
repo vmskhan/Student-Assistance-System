@@ -1,0 +1,69 @@
+.navbar-bg {
+    background-color: lightblue;
+    padding: 1rem 0;
+    z-index: 99;
+    position: relative;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+}
+
+.navbar-brand span{
+    color:var(--color-primary);
+}
+
+.navbar li {
+    padding: 0 1rem;
+}
+
+.navbar li a{
+    font-size: 1.2rem;
+    font-weight: lighter;
+}
+
+.navbar li a:hover{
+    color: var(--primary-color) !important;
+    text-shadow: 0 1rem 1rem rgba( 183, 171, 255, 0.5);
+}
+
+.btn-style{
+    width: 8rem;
+    height: 3rem;
+    border-color: darkcyan;
+    border-radius: 2rem;
+    
+    background-color: var(--primary-color);
+    text-transform: capitalize;
+    color: black;
+}
+
+.btn-style:first-child{
+    margin-right: 1rem;
+}
+
+.btn-style:hover{
+    background-color:blue;
+    color:#fff;
+}
+
+.dropdown-menu{
+    display: block;
+    position: absolute;
+}
+.dropdown-menu ul{
+    display: block;
+}
+
+.dropdown-menu{
+    display: none;
+}
+
+.dropdown-menu ul:hover{
+    background-color:blue;
+    color: black;
+}
+
+
+
+

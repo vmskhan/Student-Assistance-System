@@ -1,6 +1,7 @@
 import React, { useState} from 'react';
 import Navbar from './navbar';
 import BasicForm from './component/forms/basicForm';
+import './component/forms/basicForm.css';
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap"
 import { BrowserRouter, Routes } from 'react-router-dom';

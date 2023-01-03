@@ -1,4 +1,5 @@
 import React,{ useState } from 'react'
+import './basicForm.css'; 
 
 export const BasicForm = () => {
 
@@ -21,19 +22,28 @@ export const BasicForm = () => {
   
   return (
     <>
-       <form onSubmit={handleSubmit}>
-            <div>
-                <label htmlFor='email'>Email</label>
-                <input type="text" name="email" id="email" autoComplete="off" value={email} onChange={ (e)=> setEmail(e.target.value)}
-                />
-            </div>
+      <div className='main-container-fluid'>
+        <div className='sub-main'>
+          <form onSubmit={handleSubmit}>
+                <div className='email'>
+                    <label htmlFor='email'>Email</label>
+                    <input type="text" name="email" placeholder='email' id="email" autoComplete="off" value={email} onChange={ (e)=> setEmail(e.target.value)}
+                    />
+                </div>
 
-            <div>
-                <label htmlFor='password'>Password</label>
-                <input type="text" name="password" id="password" autoComplete="off" value={password} onChange={ (e)=> setPassword(e.target.value)}/>
-            </div>
-            <button type="submit" className="btn btn-primary">Log in now</button>
-       </form> 
+                <div className='password'>
+                    <label htmlFor='password'>Password</label>
+                    <input type="text" name="password" placeholder='**********' id="password" autoComplete="off" value={password} onChange={ (e)=> setPassword(e.target.value)}/>
+                </div>
+                <div >
+                  <button type="submit" className="btn btn-info">Login</button>
+                   <button className='register'>Already have account? Register</button>
+                </div>
+               
+          </form>
+          
+       </div> 
+      </div>
     </>
   )
 }

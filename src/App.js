@@ -1,7 +1,7 @@
 import React, { useState} from 'react';
-import Navbar from './navbar';
 import BasicForm from './component/forms/basicForm';
-import Register from './component/forms/Register';
+import Register, { Student } from './component/forms/Stdregister';
+import Faculty from './component/forms/Facultyreg';
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap";
 
@@ -19,8 +19,9 @@ const App = () => {
    
     <Routes>
        <Route path='/login' element={<BasicForm />} exact/>
-       <Route path='/Signup' element={<Register />} exact/>
-       <Route path='/home' element={<Home/>} exact/>
+       <Route path='/login' element={<Faculty />} exact/>
+       <Route path='/Signup' element={<Student />} exact/>
+       <Route path='/' element={<Home/>} exact/>
        </Routes>
     </BrowserRouter>
    

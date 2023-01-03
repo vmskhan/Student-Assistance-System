@@ -27,6 +27,9 @@ const Navbar = () => {
             <li><a className="dropdown-item" href="#">Notes</a></li>
             <li><a className="dropdown-item" href="#">Mock interview</a></li>
             <li><a className="dropdown-item" href="#">Self-learning</a></li>
+            <li><a className="dropdown-item" href="#">Notification</a></li>
+            <li><a className="dropdown-item" href="#">Attendance</a></li>
+            <li><a className="dropdown-item" href="#">Performance</a></li>
             <li><hr className="dropdown-divider"/></li>
             <li><a className="dropdown-item" href="#">Something else here</a></li>
           </ul>

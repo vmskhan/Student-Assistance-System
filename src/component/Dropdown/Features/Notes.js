@@ -1,43 +1,60 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Feature from '../Feature';
 
 
 export const Notes = () => {
+    const [notes,setNotes]=useState([
+        {
+            title:"Data Science using R",
+            description:"UNITS:1-5",
+            fileLink:"",
+            createdBy:"sridevi maam",
+        },
+        {
+            title:"Distributed System",
+            description:"UNIT:1-5",
+            fileLink:"",
+            createdBy:"maniza maam",
+        }
+    ]);
     return (
         <div className='Notes'>
             <div>
-                <h1>NOTES</h1>
-
+                <h1 className='text-center mb-5'>NOTES</h1>
+            <div className="row mb-5">
+                <div className="col-5 mx-auto">
                 <div className="input-group">
-                    <div className="form-outline">
-                        <input type="search" id="form1" class="form-control" />
-                        <label className="form-label" for="form1">Search</label>
-                    </div>
-                    <button type="button" class="btn btn-primary">
-                        <i className="fas fa-search"></i>
+                        <input type="search" placeholder="search notes" id="form1" class="form-control" />
+                        <button type="button" class="btn btn-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+</svg>
                     </button>
-
-                    <div className="row">
-                        <div className="col-sm-6">
-                            <div className="card">
-                                <div className="card-body">
-                                    <h5 className="card-title">Data Science using R</h5>
-                                    <p className="card-text">UNITS:1-5</p>
-                                    <a href="#" className="btn btn-primary">OPEN</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-sm-6">
-                            <div className="card">
-                                <div className="card-body">
-                                    <h5 className="card-title">Distributed System</h5>
-                                    <p className="card-text">UNIT:1-5</p>
-                                    <a href="#" className="btn btn-primary">OPEN</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
+                </div>
+            </div>
+                    <div className="row">
+                        {
+                            notes.map((note)=>{
+                                return(                        
+                                <div className="col-5 mx-auto">
+                                <div className="card">
+                                <div className="card-body">
+                                    <h5 className="card-title">{note.title}</h5>
+                                    <p className="card-text">
+                                        {note.description}
+                                        <br/>
+                                        Created by: {note.createdBy}
+                                        </p>
+                                    <a href={note.fileLink} className="btn btn-primary">OPEN</a>
+                                </div>
+                            </div>
+                        </div>
+                        );
+                    })
+
+                     }
+                    </div>               
             </div>
         </div>
     )

@@ -63,7 +63,7 @@ export const Student = () => {
               </div>
               <div >
                 <button type="submit" className="btn btn-info py-2">Register</button>
-                <br />Already have account?<a href="/"> Login</a>
+                <br />Already have account?<a href="/BasicForm"> Login</a>
               </div>
 
             </form>

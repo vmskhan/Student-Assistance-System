@@ -59,13 +59,17 @@ export const BasicForm = () => {
                   <div class="form-check">
                     <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked />
                     <label class="form-check-label" for="gridRadios1">
-                      Student Register
+                      <a href="/Stdregister">
+                        Student Register
+                      </a>
+
                     </label>
                   </div>
                   <div class="form-check">
                     <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2" />
                     <label class="form-check-label" for="gridRadios2">
-                      Faculty Register
+                      <a href="/Facultyreg">Faculty Register</a>
+
                     </label>
                   </div>
                 </a>
@@ -77,11 +81,7 @@ export const BasicForm = () => {
             </form>
 
           </div>
-          <div className='right'>
-            <button className="btn btn-secondary"  >
-              <a className="nav-link" href='/'>HOME</a>
-            </button>
-          </div>
+
         </div>
 
       </div>

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import './basicForm.css';
 
 
 export const Faculty = () => {
@@ -22,14 +23,14 @@ export const Faculty = () => {
 
     return (
         <>
-            <div className="Facultyreg">
+            <div className="basicForm">
                 <div className='main-container-fluid'>
                     <div className='sub-main'>
 
                         <form onSubmit={handleSubmit}>
                             <div className="row">
                                 <div className="col-7 mx-auto mt-3">
-                                    <img className="img-fluid rounded-circle" src="/assets/images/register.jfif"></img>
+                                    <img className="img-fluid rounded-circle" src="/assets/images/faculty.jfif"></img>
                                 </div>
                             </div>
                             <br />
@@ -63,7 +64,7 @@ export const Faculty = () => {
                             </div>
                             <div >
                                 <button type="submit" className="btn btn-info py-2">Register</button>
-                                <br />Already have account?<a href="/login"> Login</a>
+                                <br />Already have account?<a href="/basicForm"> Login</a>
                             </div>
 
                         </form>

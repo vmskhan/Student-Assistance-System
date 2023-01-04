@@ -1,9 +1,9 @@
-import Navbar from "../navbar";
 
-const Home=()=>{
-    return(
+
+const Home = () => {
+    return (
         <div className="home">
-            <Navbar />
+
             home
         </div>
     )

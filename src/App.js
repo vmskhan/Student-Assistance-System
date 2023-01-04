@@ -6,7 +6,6 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap";
 import Navbar from './navbar';
 import Notes from './component/Dropdown/Features/Notes';
-
 import { BrowserRouter, Routes } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 import Home from './component/Home';

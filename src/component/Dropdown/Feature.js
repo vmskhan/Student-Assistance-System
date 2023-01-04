@@ -1,5 +1,5 @@
 import React from 'react'
-import Notes from './component/forms/Notes';
+import Notes from './Features/Notes';
 export const Feature = () => {
     return (
         <div>

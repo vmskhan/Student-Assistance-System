@@ -11,6 +11,7 @@ import { BrowserRouter, Routes } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 import Home from './component/Home';
 import { Feature } from './component/Dropdown/Feature';
+import Footer from './component/Footer';
 const App = () => {
 
 
@@ -28,8 +29,10 @@ const App = () => {
           <Route path='/Facultyreg' element={<Faculty />} exact />
           <Route path='/' element={<Home />} exact />
           <Route path='/basicForm' element={<BasicForm />} exact />
-          <Route path='/Feature' element={< Feature />} exact />
-          <Route path='/Notes' element={< Notes />} exact />
+          <Route path='/Feature' element={< Feature />} exact >
+            <Route path="Notes" element={<Notes/>} exact/>
+          </Route>
+          
         </Routes>
       </BrowserRouter>
 

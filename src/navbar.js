@@ -26,7 +26,7 @@ const Navbar = () => {
                     Feature
                   </a>
                   <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a className="dropdown-item" href="#">Notes</a></li>
+                    <li><a className="dropdown-item" href="/Feature/Notes">Notes</a></li>
                     <li><a className="dropdown-item" href="#">Mock interview</a></li>
                     <li><a className="dropdown-item" href="#">Self-learning</a></li>
                     <li><a className="dropdown-item" href="#">Notification</a></li>

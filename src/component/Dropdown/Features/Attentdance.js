@@ -1,43 +1,47 @@
 import React from 'react'
+import './Attendance.css'
 
 export const Attentdance = () => {
   return (
     <div className='Attendance'>
       <div>
 
-        <form>
+        <section class="vh-100 gradient-custom">
+          <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+              <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card bg-dark text-white" style="border-radius: 1rem;">
+                  <div class="card-body p-5 text-center">
 
-          <div class="form-outline mb-4">
-            <input type="email" id="form2Example1" class="form-control" />
-            <label class="form-label" for="form2Example1">Email address</label>
-          </div>
+                    <div class="mb-md-5 mt-md-4 pb-5">
+
+                      <h2 class="fw-bold mb-2 text-uppercase">ATTENDANCE</h2>
+                      <p class="text-white-50 mb-5">Please enter your login and password!</p>
+
+                      <div class="form-outline form-white mb-4">
+                        <input type="email" id="typeEmailX" class="form-control form-control-lg" />
+                        <label class="form-label" for="typeEmailX">Email</label>
+                      </div>
+
+                      <div class="form-outline form-white mb-4">
+                        <input type="password" id="typePasswordX" class="form-control form-control-lg" />
+                        <label class="form-label" for="typePasswordX">Password</label>
+                      </div>
+
+                      {/* <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">Forgot password?</a></p> */}
+
+                      <button class="btn btn-outline-light btn-lg px-5" type="submit">Check</button>
 
 
-          <div class="form-outline mb-4">
-            <input type="password" id="form2Example2" class="form-control" />
-            <label class="form-label" for="form2Example2">Password</label>
-          </div>
+                    </div>
 
 
-          <div class="row mb-4">
-            <div class="col d-flex justify-content-center">
-
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked />
-                <label class="form-check-label" for="form2Example31"> Remember me </label>
+                  </div>
+                </div>
               </div>
             </div>
-
-            <div class="col">
-
-              <a href="#!">Forgot password?</a>
-            </div>
           </div>
-
-          <button type="button" class="btn btn-primary btn-block mb-4">Check</button>
-        </form>
-
-
+        </section>
       </div>
     </div>
   )

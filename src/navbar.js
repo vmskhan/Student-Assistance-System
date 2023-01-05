@@ -92,11 +92,11 @@ const Navbar = () => {
                     </ul>
                   </div>
                 </nav>
-                <div className="dropdown">
+                <div className="nav-item dropdown">
                   <a
-                    className="dropdown-toggle d-flex align-items-center hidden-arrow"
+                    className="dropdown-toggle"
                     href="#"
-                    id="navbarDropdownMenuAvatar"
+                    id="navbarDropdown"
                     role="button"
                     data-mdb-toggle="dropdown"
                     aria-expanded="false"

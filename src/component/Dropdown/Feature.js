@@ -10,7 +10,7 @@ export const Feature = () => {
             <Route path='Notes' element={<Notes />} exact/>
             </Routes>
             </BrowserRouter> */}
-    <Outlet/>
+            <Outlet />
         </div>
     )
 }

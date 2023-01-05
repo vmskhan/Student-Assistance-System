@@ -1,0 +1,6 @@
+.home .banner {
+    /* The image used */
+    background-image:url("./../../assets/images/graduation.jpg");
+    background-size:contain;
+    background-repeat: no-repeat;
+  }

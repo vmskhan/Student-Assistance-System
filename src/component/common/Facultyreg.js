@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import './basicForm.css';
+import './LoginForm.css';
 
 
 export const Faculty = () => {
@@ -23,7 +23,8 @@ export const Faculty = () => {
 
     return (
         <>
-            <div className="basicForm">
+            <div className="loginForm">
+            <a href="/"><button className='btn'>Back</button></a>
                 <div className='main-container-fluid'>
                     <div className='sub-main'>
 
@@ -64,7 +65,7 @@ export const Faculty = () => {
                             </div>
                             <div >
                                 <button type="submit" className="btn btn-info py-2">Register</button>
-                                <br />Already have account?<a href="/basicForm"> Login</a>
+                                <br />Already have account?<a href="/login"> Login</a>
                             </div>
 
                         </form>

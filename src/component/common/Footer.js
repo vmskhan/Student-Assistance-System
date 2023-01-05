@@ -23,6 +23,7 @@ const Footer = (props) => {
                         Project code is open source. Feel free to fork and make your own
                         version.
                     </small>
+                    <a href="https://www.freepik.com/free-vector/illustration-university-graduates_2944806.htm#query=graduation&position=0&from_view=keyword">Image by rawpixel.com</a> on Freepik
                 </p>
             </Container>
         </footer>

@@ -5,7 +5,10 @@ const path=require('path');
 const {getStudentProfiles, 
   getFacultyProfiles, 
   changeProfileStatus, 
-  deleteProfile}=require('./../controllers/AdminController');
+  deleteProfile,
+  getAdminControlsData,
+  updateAdminControls,
+  createAdminControls}=require('./../controllers/AdminController');
 
 const {addEventRegistration,
   deleteParticularRegistration,
@@ -68,5 +71,7 @@ router.route('/getStudents').get(getStudentProfiles);
 router.route('/getFaculty').get(getFacultyProfiles);
 router.route('/updateAccStatus').put(changeProfileStatus);
 router.route('/deleteProfile/:accId').delete(deleteProfile);
-
+router.route('/getAdminControls').get(getAdminControlsData);
+router.route('/updateAdminControls').put(updateAdminControls);
+router.route('/createAdminControls').post(createAdminControls);
 module.exports = router;

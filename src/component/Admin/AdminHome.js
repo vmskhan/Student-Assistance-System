@@ -13,31 +13,31 @@ const AdminHome=()=>{
     {
         title:"Faculty Profiles",
         desc:"Some quick example text to build on the card title and make up the bulk of the card's content.",
-        link:"/Feature/Certificates",
+        link:"/admin/FacultyProfiles",
         image:"",
     },
     {
         title:"Student Profiles",
         desc:"Some quick example text to build on the card title and make up the bulk of the card's content.",
-        link:"/Feature/Profile",
+        link:"/admin/StudentProfiles",
         image:"",
     },
     {
         title:"Academic performance",
         desc:"Some quick example text to build on the card title and make up the bulk of the card's content.",
-        link:"/Feature/Performance",
+        link:"/admin/Performance",
         image:"",
     },
     {
         title:"Attendance",
         desc:"Some quick example text to build on the card title and make up the bulk of the card's content.",
-        link:"/Feature/Selflearn",
+        link:"/admin/Attendance",
         image:"",
     },
     {
         title:"Notifications",
         desc:"Some quick example text to build on the card title and make up the bulk of the card's content.",
-        link:"/Feature/Selflearn",
+        link:"/admin/Notifications",
         image:"",
     },
 ]);

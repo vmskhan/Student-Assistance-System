@@ -1,6 +1,7 @@
 const fs=require('fs');
 const User=require('./../models/userModel');
 const asyncHandler=require('express-async-handler');
+const AdminControls = require('../models/AdminControlsModel');
 
 
 
@@ -79,9 +80,88 @@ const deleteProfile=asyncHandler(async(req,res)=>{
  
 })
 
+const getAdminControlsData=asyncHandler(async(req,res)=>{
+    
+  AdminControls.find({},function(err,controls){
+     
+     if(err)
+     {
+       res.json({
+         message:err,
+       });
+     }
+     else{
+         res.json({
+             'data':controls
+         });
+     }
+ });
+ 
+})
+
+const updateAdminControls=asyncHandler(async(req,res)=>{
+    const {studProfStatus,faclProfStatus,rules}=req.body;
+  AdminControls.findByIdAndUpdate({_id:req.body._id},{studProfStatus,faclProfStatus,rules},function(err,user){
+     
+     if(err)
+     {
+       res.json({
+         message:err,
+       });
+     }
+     else{
+         res.json({
+             'data':"successfully updated"
+         });
+     }
+ });
+ 
+})
+
+const createAdminControls=asyncHandler(async(req,res)=>{
+  const {accId,studProfStatus,faclProfStatus,rules}=req.body;
+AdminControls.create({
+    studProfStatus:true,
+    faclProfStatus:true,
+    rules:[
+      {
+        role:'student',
+        dept:'any',
+        year:'any',
+        range:'any',
+        action:'allow',
+    },
+    {
+      role:'faculty',
+      dept:'any',
+      range:'any',
+      action:'allow',
+    }
+    ]
+  },function(err,controls){
+   
+   if(err)
+   {
+     res.json({
+       message:err,
+     });
+   }
+   else{
+       res.json({
+           'data':controls
+       });
+   }
+});
+
+})
+
+
 module.exports={
  getStudentProfiles,
  getFacultyProfiles,
  changeProfileStatus,
- deleteProfile
+ deleteProfile,
+ getAdminControlsData,
+ updateAdminControls,
+ createAdminControls
 }

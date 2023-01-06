@@ -1,12 +1,12 @@
 const fs=require('fs');
-const Event = require("../models/EventsSchema");
-const Project = require("../models/ProjectsModel");
+const User=require('./../models/userModel');
 const asyncHandler=require('express-async-handler');
 
-const saveFiles=asyncHandler(async(req,res)=>{
-    let eventsData={};
-    let projectsData={};
-     Event.find({},function(err,events){
+
+
+const getStudentProfiles=asyncHandler(async(req,res)=>{
+    
+     User.find({role:'student'},function(err,users){
         
         if(err)
         {
@@ -15,33 +15,73 @@ const saveFiles=asyncHandler(async(req,res)=>{
           });
         }
         else{
-            eventsData=events;
-             Project.find({},(err,projects)=>{
-                if(err)
-                {
-                    res.json({
-                        'message':'save unsuccessful'
-                    });
-                }
-                else{          
-                    projectsData=projects;
-                    fs.writeFile("./public/jsonFiles/events.json",JSON.stringify(eventsData),()=>{
-                        console.log('data written to events.json');
-                      });
-                      fs.writeFile("./public/jsonFiles/projects.json",JSON.stringify(projectsData),()=>{
-                        console.log('data written to projects.json');
-                      });
-                    res.json({
-                        'message':'successfully saved'
-                    });
-                }
-              });
-              
+            res.json({
+                'data':users
+            });
         }
     });
     
 })
 
+const getFacultyProfiles=asyncHandler(async(req,res)=>{
+    
+  User.find({role:'faculty'},function(err,users){
+     
+     if(err)
+     {
+       res.json({
+         message:err,
+       });
+     }
+     else{
+         res.json({
+             'data':users
+         });
+     }
+ });
+ 
+})
+
+const changeProfileStatus=asyncHandler(async(req,res)=>{
+    
+  User.findByIdAndUpdate({_id:req.body.accId},{status:req.body.status},function(err,user){
+     
+     if(err)
+     {
+       res.json({
+         message:err,
+       });
+     }
+     else{
+         res.json({
+             'data':"successfully updated"
+         });
+     }
+ });
+ 
+})
+const deleteProfile=asyncHandler(async(req,res)=>{
+    console.log('acc id:'+req.params.accId);
+  User.findByIdAndDelete({_id:req.params.accId},function(err,users){
+     
+     if(err)
+     {
+       res.json({
+         message:err,
+       });
+     }
+     else{
+         res.json({
+             'data':"successfully deleted"
+         });
+     }
+ });
+ 
+})
+
 module.exports={
-    saveFiles
+ getStudentProfiles,
+ getFacultyProfiles,
+ changeProfileStatus,
+ deleteProfile
 }

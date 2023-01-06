@@ -5,14 +5,14 @@ import Notes from './component/Dropdown/Features/Notes';
 import { BrowserRouter, Routes } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 import StudentRouter from './component/Student/StudentRouter';
-import LoginForm from './component/common/LoginForm';
-import Student from './component/common/Stdregister';
-import Faculty from './component/common/Facultyreg';
+import LoginForm from './component/Common/LoginForm';
+import Student from './component/Common/Stdregister';
+import Faculty from './component/Common/Facultyreg';
 import AdminRouter from './component/Admin/AdminRouter'
 import AdminHome from './component/Admin/AdminHome';
 import AdminStudentProfiles from './component/Admin/AdminStudentProfiles';
 import AdminControls from './component/Admin/AdminControls';
-import Home from './component/common/Home';
+import Home from './component/Common/Home';
 
 import StudentHome from './component/Student/StudentHome';
 import StudentNotes from './component/Student/StudentNotes';

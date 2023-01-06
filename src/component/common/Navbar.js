@@ -28,7 +28,7 @@ const Navbar = () => {
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
 
-                  <a className="nav-link active" aria-current="page" href="/">Home</a>
+                  <a className="nav-link active" aria-current="page" href="/"><b>Home</b></a>
                 </li>
                 {/* <li className="nav-item dropdown">
                   <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -43,16 +43,16 @@ const Navbar = () => {
                 </li> */}
 
                 <li className="nav-item">
-                  <a className="nav-link" href="/StudentRegister">Student signup</a>
+                  <a className="nav-link" href="/StudentRegister"><b>Student signup</b></a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="/FacultyRegister">Faculty signup</a>
+                  <a className="nav-link" href="/FacultyRegister"><b>Faculty signup</b></a>
                 </li>
 
 
               </ul>
               <div className="d-flex align-items-center" >
-                <a href='/login'><button className="btn  btn-outline-success border-1 border-primary" type="button">Log in <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
+                <a href='/login'><button className="btn  btn-outline-success border-1 border-primary" type="button"><b>Log in </b><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
                   <path fillRule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z" />
                   <path fillRule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z" />
                 </svg></button></a>

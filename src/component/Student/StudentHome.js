@@ -68,7 +68,7 @@ const StudentHome = () => {
             </section>
             <section>
             <h1>time table</h1>
-            <table class="table">
+            <table className="table">
   <thead>
     <tr>
       <th scope="col">#</th>

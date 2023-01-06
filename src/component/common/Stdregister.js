@@ -1,10 +1,15 @@
+import axios from 'axios';
 import React, { useState } from 'react'
 import './LoginForm.css';
 
 export const Student = () => {
-
+  const [name,setName]=useState('');
+  const [id,setId]=useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [pic,setPic]=useState(
+    "https://www.google.com/imgres?imgurl=https%3A%2F%2Fwww.pngitem.com%2Fpimgs%2Fm%2F522-5220445_anonymous-profile-grey-person-sticker-glitch-empty-profile.png&imgrefurl=https%3A%2F%2Fwww.pngitem.com%2Fmiddle%2FhmhxiJi_anonymous-profile-grey-person-sticker-glitch-empty-profile%2F&tbnid=GHbdym26eAzRCM&vet=12ahUKEwjd8N3N1qf5AhWyx6ACHdkCCOQQMygCegUIARDJAQ..i&docid=DW6FqC3PlmkyYM&w=860&h=706&q=empty%20profile%20pic%20icon&ved=2ahUKEwjd8N3N1qf5AhWyx6ACHdkCCOQQMygCegUIARDJAQ"
+);
   const [error, setError] = useState('');
 
   function validateForm() {
@@ -15,9 +20,24 @@ export const Student = () => {
     event.preventDefault();
     if (!validateForm()) {
       setError('Email and password are required');
+      console.log('error');
       return;
     }
+    console.log('reached');
     // Add code to submit the form here
+    let data={
+      name:name,
+      email:email,
+      password:password,
+      id:id,
+      pic:pic,
+      role:"student",
+    }
+    axios.post('/api/users/register',data)
+    .then((res)=>res.data)
+    .then((data)=>{
+      console.log(data);
+    });
   }
 
   return (
@@ -40,26 +60,26 @@ export const Student = () => {
               <div className=' row '>
                 <div className="input-group rounded-4">
                   {/* <span className="input-group-text" id="basic-addon1"><img className="img-fluid userpic"></img></span>     */}
-                  <input type="text" class="form-control col rounded-pill" placeholder="Full Name" aria-label="Username" aria-describedby="basic-addon1" />
+                  <input type="text" onChange={(e)=>setName(e.target.value)} class="form-control col rounded-pill" placeholder="Full Name" aria-label="Username" aria-describedby="basic-addon1" />
                 </div>
               </div>
               <div className='mb-1 row '>
                 <div className="input-group mb-1 rounded-4 mt-1">
                   {/* <span className="input-group-text" id="basic-addon1"><img className="img-fluid userpic"></img></span>     */}
-                  <input type="text" class="form-control col rounded-pill" placeholder="1604-XX-XXX-XXX" aria-label="Username" aria-describedby="basic-addon1" />
+                  <input type="text" onChange={(e)=>setId(e.target.value)} class="form-control col rounded-pill" placeholder="1604-XX-XXX-XXX" aria-label="Username" aria-describedby="basic-addon1" />
                 </div>
               </div>
               <div className='mb-1 row '>
                 <div className="input-group mb-1 rounded-4 mt-1">
                   {/* <span className="input-group-text" id="basic-addon1"><img className="img-fluid userpic"></img></span>     */}
-                  <input type="text" class="form-control col rounded-pill" placeholder="Username@mjcollege.ac.in" aria-label="Username" aria-describedby="basic-addon1" />
+                  <input type="text" onChange={(e)=>setEmail(e.target.value)} class="form-control col rounded-pill" placeholder="Username@mjcollege.ac.in" aria-label="Username" aria-describedby="basic-addon1" />
                 </div>
               </div>
 
               <div className='mb-1 row'>
                 <div className="input-group mb-1 rounded-4 mt-1">
                   {/* <span className="input-group-text" id="basic-addon1"><img className="img-fluid userpic" src="/assets/images/user icon.jfif"></img></span>     */}
-                  <input type="password" class="form-control col rounded-pill" placeholder="Password" aria-label="password" aria-describedby="basic-addon1" />
+                  <input type="password" onChange={(e)=>setPassword(e.target.value)} class="form-control col rounded-pill" placeholder="Password" aria-label="password" aria-describedby="basic-addon1" />
                 </div>
 
               </div>

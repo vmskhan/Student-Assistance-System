@@ -1,11 +1,11 @@
-const { ConflictResolutionMode } = require('@azure/cosmos');
+// const { ConflictResolutionMode } = require('@azure/cosmos');
 const asyncHandler=require('express-async-handler');
 const User=require('../models/userModel');
 const generateToken = require('../utils/generateToken');
 
 
 const registerUser =asyncHandler(async(req,res) => {
-    const {name, email, password, pic,isAdmin} = req.body;
+    const {name, email, password, role,pic,id} = req.body;
 
     
     console.log('register user method called');
@@ -17,7 +17,7 @@ const registerUser =asyncHandler(async(req,res) => {
     }
     console.log('user doesnt exist');
     const user=await User.create({
-            name,email,password,pic,isAdmin
+            name,email,password,role,pic,status:"active",id
         });
     
         console.log('user created');
@@ -27,8 +27,9 @@ const registerUser =asyncHandler(async(req,res) => {
             _id:user.id,
             name:user.name,
             email:user.email,
-            isAdmin:user.isAdmin,
+            role:user.role,
             pic:user.pic,
+            id:user.id,
             token: generateToken(user._id),
         });
         
@@ -53,7 +54,8 @@ const authUser =asyncHandler(async(req,res) => {
             _id: user.id,
             name: user.name,
             email: user.email,
-            isAdmin: user.isAdmin,
+            role: user.role,
+            status:user.status,
             pic: user.pic,
             token: generateToken(user._id),
         });
@@ -61,7 +63,7 @@ const authUser =asyncHandler(async(req,res) => {
         }
         else{
             res.status(400);
-            throw new Error("Invalid Email or Password");
+            res.send("Invalid Email or Password");
         }
 
 });

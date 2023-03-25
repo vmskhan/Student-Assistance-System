@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v1
       with:
         registry: https://ghcr.io/
-        username: ${{ secrets.AzureAppService_ContainerUsername_79ad045720fe42dfb054a3bb1c46d194 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_f24078762131483ebd57b71f723ef5dd }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_8ddcff49bfad486d85ebcd67bdfea75e }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_073e49fb640746d29705f5625d945305 }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: ghcr.io/${{ secrets.AzureAppService_ContainerUsername_79ad045720fe42dfb054a3bb1c46d194 }}/studentassistancesystem:${{ github.sha }}
+        tags: ghcr.io/${{ secrets.AzureAppService_ContainerUsername_8ddcff49bfad486d85ebcd67bdfea75e }}/sas:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'student-assistance-system'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_e09393a2fb8a4911afd36481d03d7551 }}
-        images: 'ghcr.io/${{ secrets.AzureAppService_ContainerUsername_79ad045720fe42dfb054a3bb1c46d194 }}/studentassistancesystem:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_8b365f6d172d459a8487a6265dd9e891 }}
+        images: 'ghcr.io/${{ secrets.AzureAppService_ContainerUsername_8ddcff49bfad486d85ebcd67bdfea75e }}/sas:${{ github.sha }}'

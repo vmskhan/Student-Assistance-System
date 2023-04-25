@@ -1,9 +1,14 @@
 import axios from 'axios';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './LoginForm.css';
+import { Link, useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 
 export const Faculty = () => {
+    const isLoggedIn=useSelector(state=>state.auth.isLoggedIn);
+    const navigate=useNavigate();
+    
     const [name,setName]=useState('');
     const [id,setId]=useState('');
     const [email, setEmail] = useState('');
@@ -12,6 +17,12 @@ export const Faculty = () => {
       "https://www.google.com/imgres?imgurl=https%3A%2F%2Fwww.pngitem.com%2Fpimgs%2Fm%2F522-5220445_anonymous-profile-grey-person-sticker-glitch-empty-profile.png&imgrefurl=https%3A%2F%2Fwww.pngitem.com%2Fmiddle%2FhmhxiJi_anonymous-profile-grey-person-sticker-glitch-empty-profile%2F&tbnid=GHbdym26eAzRCM&vet=12ahUKEwjd8N3N1qf5AhWyx6ACHdkCCOQQMygCegUIARDJAQ..i&docid=DW6FqC3PlmkyYM&w=860&h=706&q=empty%20profile%20pic%20icon&ved=2ahUKEwjd8N3N1qf5AhWyx6ACHdkCCOQQMygCegUIARDJAQ"
   );
     const [error, setError] = useState('');
+     const user=JSON.parse(localStorage.getItem('userInfo'));
+
+    useEffect(()=>{
+        if(user && isLoggedIn)
+            navigate('/'+user.role+'/home');
+          },[]);
 
     function validateForm() {
         return email.length > 0 && password.length > 0;
@@ -42,7 +53,7 @@ export const Faculty = () => {
     return (
         <>
             <div className="loginForm">
-            <a href="/"><button className='btn'>Back</button></a>
+            <Link to="/"><button className='btn'>Back</button></Link>
                 <div className='main-container-fluid'>
                     <div className='sub-main'>
 
@@ -83,7 +94,7 @@ export const Faculty = () => {
                             </div>
                             <div >
                                 <button type="submit" className="btn btn-info py-2">Register</button>
-                                <br />Already have account?<a href="/login"> Login</a>
+                                <br />Already have account?<Link to="/login"> Login</Link>
                             </div>
 
                         </form>

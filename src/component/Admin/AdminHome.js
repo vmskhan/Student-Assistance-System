@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Chart from "react-google-charts";
+import { Link } from "react-router-dom";
 
 const AdminHome=()=>{
     
@@ -64,7 +65,7 @@ const AdminHome=()=>{
                 <div className="card-body">
                     <h6 className="card-title">{card.title}</h6>
                     <p className="card-text">{card.desc}</p>
-                    <a href={card.link} className="mx-auto"><button className="btn btn-primary">Go</button></a>
+                    <Link to={card.link} className="mx-auto"><button className="btn btn-primary">Go</button></Link>
                 </div>
                 </div>
                 );

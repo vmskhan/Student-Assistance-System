@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap";
 import Notes from './component/Dropdown/Features/Notes';
-import { BrowserRouter, Routes } from 'react-router-dom';
+import { BrowserRouter, Routes, useNavigate } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 import StudentRouter from './component/Student/StudentRouter';
 import LoginForm from './component/Common/LoginForm';
@@ -31,11 +31,28 @@ import Performance from './component/Dropdown/Features/Performance';
 import Selflearn from './component/Dropdown/Features/Selflearn';
 import Notify from './component/Dropdown/Features/Notify';
 import Attendance from './component/Dropdown/Features/Attendance';
+import { useDispatch, useSelector } from 'react-redux';
+import { authActions } from './store/authSlice';
 
 
 const App = () => {
+const isLoggedIn=useSelector(state=>state.auth.isLoggedIn);
+const dispatch=useDispatch();
+// const navigate=useNavigate();
+useEffect(()=>{
+  const user=JSON.parse(localStorage.getItem('userInfo'))
+  if(user)
+  {
+    if(!isLoggedIn)
+      dispatch(authActions.login());
+      
+    // navigate('/'+user.role+'/home');
+  }
+},[]);
 
-
+useEffect(()=>{
+console.log(isLoggedIn);
+},[isLoggedIn]);
   return (
     <>
       <BrowserRouter>
@@ -46,6 +63,9 @@ const App = () => {
           <Route path='/StudentRegister' element={<Student />} exact />
           <Route path='/FacultyRegister' element={<Faculty />} exact />
           <Route path='/' element={<Home />} exact />
+
+          {isLoggedIn &&
+          <>
           {/* <Route path='/basicForm' element={<LoginForm />} exact />
           <Route path='/Feature' element={< Feature />} exact >
             <Route path="Notes" element={<Notes/>} exact/>
@@ -84,6 +104,8 @@ const App = () => {
             <Route path="Notifications" element={<StudentNotifications />} exact />
             <Route path="Attendance" element={<StudentAttendance />} exact />
           </Route>
+          </>
+          }
         </Routes>
       </BrowserRouter>
 

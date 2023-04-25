@@ -1,12 +1,21 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Chart from "react-google-charts";
 import Navbar from "./Navbar";
 import './home.css';
 import Footer from "./Footer";
-
-
+import { Link, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Home = () => {
+  const isLoggedIn=useSelector(state=>state.auth.isLoggedIn);
+  const navigate=useNavigate();
+  const user=JSON.parse(localStorage.getItem('userInfo'));
+
+  useEffect(()=>{
+    if(user && isLoggedIn)
+        navigate('/'+user.role+'/home');
+      },[isLoggedIn]);
+
     const [cardData,setCardData]=useState([
         {
         title:"Notes",
@@ -43,11 +52,11 @@ const Home = () => {
         <div className="home">
           <Navbar/>
             <section className="container" id="section-1">
-              <div class="mx-auto banner vh-100">
+              <div className="mx-auto banner vh-100">
                 <div className="text-center align-self-center">
                   <h1>Welcome Students and Faculty</h1>
                   <h5>To Student Assistance System</h5>
-                  <a href="#section-2"><button className="btn btn-primary">Know more</button></a>
+                  <Link to="#section-2"><button className="btn btn-primary">Know more</button></Link>
                 </div>  
               </div>
             </section>
@@ -81,10 +90,10 @@ const Home = () => {
             </p>
             <p>Students can register here</p>
               <div className="text-center">
-              <a href="/StudentRegister"><button className="btn btn-primary">Student signup</button></a>
+              <Link to="/StudentRegister"><button className="btn btn-primary">Student signup</button></Link>
               </div>
             </div>
-            <div class="vr bg-success"></div>
+            <div className="vr bg-success"></div>
             <div className="col-5">
             <h2 className="text-center">Faculty and Admin</h2>
             <p>This is a useful system for teachers where they can track
@@ -97,7 +106,7 @@ const Home = () => {
             </p>
             <p>Teachers can register here</p>
               <div className="text-center">
-              <a href="/StudentRegister" className="mx-auto"><button className="btn btn-primary">Faculty signup</button></a>
+              <Link to="/StudentRegister" className="mx-auto"><button className="btn btn-primary">Faculty signup</button></Link>
               </div>
             </div>
           </div>

@@ -70,14 +70,14 @@ const getAdminControls=async()=>{
     }
     return(
     <div>
-        <div class="modal" id="addRuleModal" tabindex="-1">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Add Rule On {rule.role} Profiles</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div className="modal" id="addRuleModal" tabindex="-1">
+            <div className="modal-dialog">
+                <div className="modal-content">
+                <div className="modal-header">
+                    <h5 className="modal-title">Add Rule On {rule.role} Profiles</h5>
+                    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
+                <div className="modal-body">
                 <p>Type Comma seprated range of rollno's. Ex-: 0-20,301-306 in the range. 
                     For allowing access from any dept,year,roll/uid put value as <span className="fw-bolder text-primary">'any'</span>.</p>
                     <form>
@@ -117,23 +117,23 @@ const getAdminControls=async()=>{
                     </form>
                     {/* <input type="text" className="form-control" placeholder="Department" value={rule.dept}/>} */}
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" onClick={addNewRule}>Add</button>
+                <div className="modal-footer">
+                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" className="btn btn-primary" onClick={addNewRule}>Add</button>
                 </div>
                 </div>
             </div>
         </div>
 
 
-        <div class="modal" id="updateRuleModal" tabindex="-1">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Update Rule On {rule.role} Profiles</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div className="modal" id="updateRuleModal" tabindex="-1">
+            <div className="modal-dialog">
+                <div className="modal-content">
+                <div className="modal-header">
+                    <h5 className="modal-title">Update Rule On {rule.role} Profiles</h5>
+                    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
+                <div className="modal-body">
                 <p>Type Comma seprated range of rollno's. Ex-: 0-20,301-306 in the range. 
                     For allowing access from any dept,year,roll/uid put value as <span className="fw-bolder text-primary">'any'</span>.</p>
                     <form>
@@ -173,9 +173,9 @@ const getAdminControls=async()=>{
                     </form>
                     {/* <input type="text" className="form-control" placeholder="Department" value={rule.dept}/>} */}
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" onClick={updateRule}>Update</button>
+                <div className="modal-footer">
+                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" className="btn btn-primary" onClick={updateRule}>Update</button>
                 </div>
                 </div>
             </div>

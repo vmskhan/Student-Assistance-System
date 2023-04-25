@@ -106,7 +106,7 @@ const Home = () => {
             </p>
             <p>Teachers can register here</p>
               <div className="text-center">
-              <Link to="/StudentRegister" className="mx-auto"><button className="btn btn-primary">Faculty signup</button></Link>
+              <Link to="/FacultyRegister" className="mx-auto"><button className="btn btn-primary">Faculty signup</button></Link>
               </div>
             </div>
           </div>

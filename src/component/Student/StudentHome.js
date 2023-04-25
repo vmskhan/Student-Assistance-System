@@ -38,7 +38,7 @@ const StudentHome = () => {
 ]);
     return (
         <div className="home container">
-          <section className="vh-100 d-flex justify-content-center align-items-center bg-primary">
+          <section className="vh-100 d-flex justify-content-center align-items-center bg-warning">
             <div className="">
             <div className="h1 fw-bolder fs-1 text-center my-5">Hello, Welcome to Dashboard</div>
             </div>

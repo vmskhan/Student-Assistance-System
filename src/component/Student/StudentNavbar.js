@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import {authActions} from "./../../store/authSlice";
 const StudentNavbar=()=>{
   const isLoggedIn=useSelector(state=>state.auth.isLoggedIn);  
@@ -15,7 +15,7 @@ const StudentNavbar=()=>{
     return (
       <>
         <section className='navbar-bg'>
-          <nav className="navbar navbar-expand-lg navbar-light bg-info fw-bolder">
+          <nav className="navbar navbar-expand-lg navbar-light bg-primary">
             <div className="container-fluid">
               <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -38,29 +38,29 @@ const StudentNavbar=()=>{
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                   <li className="nav-item">
   
-                    <Link className="nav-link active fw-bold" aria-current="page" to="/student/home">Home</Link>
+                    <NavLink activeClassName="is-active" className="active fw-bold btn btn-light btn-outline-info" aria-current="page" to="/student/home">Home</NavLink>
                   </li>
                   <li className="nav-item dropdown">
-                    <Link className="nav-link dropdown-toggle" to="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <Link className="btn btn-light btn-outline-info dropdown-toggle fw-bold" to="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       Feature
                     </Link>
                     <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <li><Link className="dropdown-item" to="/student/Notes">Notes</Link></li>
-                      <li><Link className="dropdown-item" to="/student/Mock">Mock interview</Link></li>
-                      <li><Link className="dropdown-item" to="/student/Selflearn">Self-learning</Link></li>
-                      <li><Link className="dropdown-item" to="/student/Notifications">Notification</Link></li>
-                      <li><Link className="dropdown-item" to="/student/Attendance">Attendance</Link></li>
-                      <li><Link className="dropdown-item" to="/student/Performance">Performance</Link></li>
+                      <li><NavLink activeClassName="is-active" className="dropdown-item fw-bold" to="/student/Notes">Notes</NavLink></li>
+                      <li><NavLink activeClassName="is-active" className="dropdown-item fw-bold" to="/student/Mock">Mock interview</NavLink></li>
+                      <li><NavLink activeClassName="is-active" className="dropdown-item fw-bold" to="/student/Selflearn">Self-learning</NavLink></li>
+                      <li><NavLink activeClassName="is-active" className="dropdown-item fw-bold" to="/student/Notifications">Notification</NavLink></li>
+                      <li><NavLink activeClassName="is-active" className="dropdown-item fw-bold" to="/student/Attendance">Attendance</NavLink></li>
+                      <li><NavLink activeClassName="is-active" className="dropdown-item fw-bold" to="/student/Performance">Performance</NavLink></li>
                       <li><hr className="dropdown-divider" /></li>
   
                     </ul>
                   </li>
   
                   <li className="nav-item">
-                    <Link className="nav-link" to="#">About</Link>
+                    <NavLink activeClassName="is-active" className="btn btn-light btn-outline-info fw-bold" to="#">About</NavLink>
                   </li>
                   <li className="nav-item">
-                    <Link className="nav-link" to="#">Contact</Link>
+                    <NavLink activeClassName="is-active" className="btn btn-light btn-outline-info fw-bold" to="#">Contact</NavLink>
                   </li>
   
   
@@ -68,7 +68,7 @@ const StudentNavbar=()=>{
                 <div className="d-flex align-items-center" >
                   
                   <div className="dropdown">
-                        <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button className="btn btn-light btn-outline-info dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                           <img
                           src="/assets/images/logo1.png"
                           className="rounded-circle"
@@ -83,17 +83,16 @@ const StudentNavbar=()=>{
                       aria-labelledby="navbarDropdownMenuAvatar"
                     >
                       <li>
-                        <Link className="dropdown-item" to="#">My profile</Link>
+                        <NavLink activeClassName="is-active" className="dropdown-item fw-bold" to="#">My profile</NavLink>
                       </li>
                       <li>
-                        <Link className="dropdown-item" to="#">Settings</Link>
+                        <NavLink activeClassName="is-active" className="dropdown-item fw-bold" to="#">Settings</NavLink>
                       </li>
                       <li>
-                        <button className="dropdown-item " onClick={()=>logoutHandler()}>Logout</button>
+                        <button className="dropdown-item fw-bold" onClick={()=>logoutHandler()}>Logout</button>
                       </li>
                     </ul>
                   </div>
-  
                 </div>
               </div>
             </div>

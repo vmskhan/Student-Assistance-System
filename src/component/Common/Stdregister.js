@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import './LoginForm.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import Navbar from './Navbar';
 
 export const Student = () => {
   const isLoggedIn=useSelector(state=>state.auth.isLoggedIn);
@@ -53,12 +54,19 @@ export const Student = () => {
   return (
     <>
       <div className="loginForm">
-      <Link to="/"><button className='btn'>Back</button></Link>
+        <Navbar/>
         <div className='main-container-fluid'>
         
           <div className='sub-main'>
           
             <form onSubmit={handleSubmit}>
+              
+            <div className="row">
+                <div className="col-12 mx-auto mt-3">
+                 <div className='h4'>Student Signup</div>
+                </div>
+              </div>
+
               <div className="row">
                 <div className="col-7 mx-auto mt-3">
                   <img className="img-fluid rounded-circle" src="/assets/images/register.jfif"></img>

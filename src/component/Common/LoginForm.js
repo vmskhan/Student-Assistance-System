@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import './LoginForm.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { authActions } from '../../store/authSlice';
+import Navbar from './Navbar';
 
 export const LoginForm = () => {
   const isLoggedIn=useSelector(state=>state.auth.isLoggedIn);
@@ -49,13 +50,18 @@ const user=JSON.parse(localStorage.getItem('userInfo'));
   return (
     <>
       <div className="loginForm">
-    <Link to="/"><button className='btn'>Back</button></Link>
+        <Navbar/>
         <div className='main-container-fluid'>
 
 
           <div className='sub-main'>
 
             <form onSubmit={handleSubmit}>
+            <div className="row">
+              <div className="col-12 mx-auto ">
+              <div className='h2'>Login</div>
+              </div>
+          </div>
               <div className="row">
                 <div className="col-7 mx-auto mt-5">
                   <img className="img-fluid rounded-circle" src="/assets/images/logo3.png"></img>
@@ -82,23 +88,12 @@ const user=JSON.parse(localStorage.getItem('userInfo'));
               </div>
               <div >
                 <button type="submit" className="btn btn-info py-2">Login</button>
-                <br />Don't have account? Register
-                <Link to="/Signup">
-                  <div className="form-check">
-                    <input className="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" defaultChecked />
-                    <label className="form-check-label" htmlFor="gridRadios1">
-                      <Link to="/Studentregister">Student Register</Link>
+                <br />Don't have account? Register as<br/>
+               
+                      <Link className="" to="/Studentregister">Student</Link>/
 
-                    </label>
-                  </div>
-                  <div className="form-check">
-                    <input className="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2" />
-                    <label className="form-check-label" htmlFor="gridRadios2">
-                      <Link to="/Facultyregister">Faculty Register</Link>
+                      <Link className="" to="/Facultyregister">Faculty</Link>
 
-                    </label>
-                  </div>
-                </Link>
                 <br />
 
 

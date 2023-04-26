@@ -44,7 +44,7 @@ const AdminHome=()=>{
 ]);
     return(
             <div className="home">
-    
+{/*     
                 <section>
                 <h1>performance graph</h1>
                 <Chart
@@ -54,7 +54,7 @@ const AdminHome=()=>{
                     height="400px"
                     legendToggle
                     />
-                </section>
+                </section> */}
                 <section>
                 <h1>cards</h1>
                 <div className="row">

@@ -37,11 +37,11 @@ const AdminNavbar=()=>{
                   />
                 </Link>
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li className="nav-item">
+                  {/* <li className="nav-item">
   
                     <NavLink activeClassName="is-active" className="btn btn-light btn-outline-success fw-bold" aria-current="page" to="/admin/home">Home</NavLink>
-                  </li>
-                  <li className="nav-item dropdown">
+                  </li> */}
+                  {/* <li className="nav-item dropdown">
                     <Link className="btn btn-light btn-outline-success fw-bold dropdown-toggle" to="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       Features
                     </Link>
@@ -53,14 +53,14 @@ const AdminNavbar=()=>{
                       <li><hr className="dropdown-divider" /></li>
   
                     </ul>
-                  </li>
-  
+                  </li> */}
+{/*   
                   <li className="nav-item">
                     <NavLink activeClassName="is-active" className="btn btn-light btn-outline-success fw-bold" to="/admin/Controls">Controls</NavLink>
-                  </li>
-                  <li className="nav-item">
+                  </li> */}
+                  {/* <li className="nav-item">
                     <NavLink activeClassName="is-active" className="btn btn-light btn-outline-success fw-bold" to="/admin/Notifications">Notifications</NavLink>
-                  </li>
+                  </li> */}
   
   
                 </ul>

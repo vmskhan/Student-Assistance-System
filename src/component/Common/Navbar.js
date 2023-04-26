@@ -28,11 +28,11 @@ const Navbar = () => {
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
 
-                  <NavLink activeClassName="is-active" className="btn btn-light btn-outline-primary fw-bold" aria-current="page" to="/" exact><b>Home</b></NavLink>
+                  <NavLink activeClassName="is-active" className="btn btn-outline-primary fw-bold" aria-current="page" to="/" exact><b>Home</b></NavLink>
                 </li>
 
                 <li className="nav-item">
-                  <NavLink activeClassName="is-active" className="btn btn-light btn-outline-primary fw-bold" to="/StudentRegister"><b>Student signup</b></NavLink>
+                  <NavLink activeClassName="is-active" className="btn btn-outline-primary border-0 fw-normal text-decoration-italic" to="/StudentRegister"><b>Student signup</b></NavLink>
                 </li>
                 <li className="nav-item">
                   <NavLink activeClassName="is-active" className="btn btn-light btn-outline-primary fw-bold" to="/FacultyRegister"><b>Faculty signup</b></NavLink>

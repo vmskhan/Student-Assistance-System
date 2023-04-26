@@ -1,14 +1,25 @@
 import axios from 'axios';
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom';
 import './LoginForm.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { authActions } from '../../store/authSlice';
+import Navbar from './Navbar';
 
 export const LoginForm = () => {
+  const isLoggedIn=useSelector(state=>state.auth.isLoggedIn);
+  const  dispatch=useDispatch();
+const user=JSON.parse(localStorage.getItem('userInfo'));
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const navig=useNavigate();
+  const navigate=useNavigate();
+
+  useEffect(()=>{
+    if(user && isLoggedIn)
+        navigate('/'+user.role+'/home');
+      },[]);
   function validateForm() {
     return email.length > 0 && password.length > 0;
   }
@@ -29,12 +40,9 @@ export const LoginForm = () => {
     .then((res)=>res.data)
     .then((data)=>{
       console.log(data);
-      if(data.role==='admin')
-        navig('/admin/home');
-      else if(data.role==='faculty')
-        navig('/faculty/home');
-      else if(data.role==='student')
-        navig('/student/home');
+      localStorage.setItem('userInfo',JSON.stringify(data));
+     dispatch(authActions.login()); 
+    navigate('/'+data.role+'/home');
 
     });
   }
@@ -42,13 +50,18 @@ export const LoginForm = () => {
   return (
     <>
       <div className="loginForm">
-    <a href="/"><button className='btn'>Back</button></a>
+        <Navbar/>
         <div className='main-container-fluid'>
 
 
           <div className='sub-main'>
 
             <form onSubmit={handleSubmit}>
+            <div className="row">
+              <div className="col-12 mx-auto ">
+              <div className='h2'>Login</div>
+              </div>
+          </div>
               <div className="row">
                 <div className="col-7 mx-auto mt-5">
                   <img className="img-fluid rounded-circle" src="/assets/images/logo3.png"></img>
@@ -75,25 +88,12 @@ export const LoginForm = () => {
               </div>
               <div >
                 <button type="submit" className="btn btn-info py-2">Login</button>
-                <br />Don't have account? Register
-                <a href="/Signup">
-                  <div className="form-check">
-                    <input className="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" defaultChecked />
-                    <label className="form-check-label" htmlFor="gridRadios1">
-                      <a href="/Studentregister">
-                        Student Register
-                      </a>
+                <br />Don't have account? Register as<br/>
+               
+                      <Link className="" to="/Studentregister">Student</Link>/
 
-                    </label>
-                  </div>
-                  <div className="form-check">
-                    <input className="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2" />
-                    <label className="form-check-label" htmlFor="gridRadios2">
-                      <a href="/Facultyregister">Faculty Register</a>
+                      <Link className="" to="/Facultyregister">Faculty</Link>
 
-                    </label>
-                  </div>
-                </a>
                 <br />
 
 

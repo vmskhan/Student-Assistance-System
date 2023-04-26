@@ -1,5 +1,6 @@
 import React from 'react'
 import './Attendance.css'
+import { Link } from 'react-router-dom';
 
 export const Attendance = () => {
   return (
@@ -30,7 +31,7 @@ export const Attendance = () => {
 
                       </div>
 
-                      {/* <p className="small mb-5 pb-lg-2"><a className="text-white-50" href="#!">Forgot password?</a></p> */}
+                      {/* <p className="small mb-5 pb-lg-2"><Link className="text-white-50" to="#!">Forgot password?</Link></p> */}
 
                       <button className="btn btn-outline-light btn-lg px-5" type="submit">Check</button>
 

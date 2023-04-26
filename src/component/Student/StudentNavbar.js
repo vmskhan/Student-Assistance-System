@@ -1,15 +1,25 @@
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import {authActions} from "./../../store/authSlice";
 const StudentNavbar=()=>{
-    const [show, setShow] = useState(false);
+  const isLoggedIn=useSelector(state=>state.auth.isLoggedIn);  
+    const dispatch=useDispatch();
+    const navigate=useNavigate();
+
+    const logoutHandler=()=>{
+      localStorage.removeItem('userInfo');
+      dispatch(authActions.logout());
+      navigate('/');
+    }
     return (
       <>
         <section className='navbar-bg'>
-          <nav className="navbar navbar-expand-lg navbar-light bg-info">
+          <nav className="navbar navbar-expand-lg navbar-light bg-primary">
             <div className="container-fluid">
               <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                aria-expanded="false" aria-label="Toggle navigation" onClick={() => setShow(!show)}>
+                aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
                 <i className="fas fa-bars"></i>
   
@@ -17,112 +27,72 @@ const StudentNavbar=()=>{
   
   
               <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                <a className="navbar-brand mt-1 mt-lg-0" href="/student/home">
+                <Link className="navbar-brand mt-1 mt-lg-0" to="/student/home">
                   <img
                     src="/assets/images/SAS2.png"
                     height="70"
                     alt="MDB Logo"
                     loading="lazy"
                   />
-                </a>
+                </Link>
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                   <li className="nav-item">
   
-                    <a className="nav-link active" aria-current="page" href="/student/home">Home</a>
+                    <NavLink activeClassName="is-active" className="active fw-bold btn btn-light btn-outline-info" aria-current="page" to="/student/home">Home</NavLink>
                   </li>
                   <li className="nav-item dropdown">
-                    <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <Link className="btn btn-light btn-outline-info dropdown-toggle fw-bold" to="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       Feature
-                    </a>
+                    </Link>
                     <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <li><a className="dropdown-item" href="/student/Notes">Notes</a></li>
-                      <li><a className="dropdown-item" href="/student/Mock">Mock interview</a></li>
-                      <li><a className="dropdown-item" href="/student/Selflearn">Self-learning</a></li>
-                      <li><a className="dropdown-item" href="/student/Notifications">Notification</a></li>
-                      <li><a className="dropdown-item" href="/student/Attendance">Attendance</a></li>
-                      <li><a className="dropdown-item" href="/student/Performance">Performance</a></li>
+                      <li><NavLink activeClassName="is-active" className="dropdown-item fw-bold" to="/student/Notes">Notes</NavLink></li>
+                      <li><NavLink activeClassName="is-active" className="dropdown-item fw-bold" to="/student/Mock">Mock interview</NavLink></li>
+                      <li><NavLink activeClassName="is-active" className="dropdown-item fw-bold" to="/student/Selflearn">Self-learning</NavLink></li>
+                      <li><NavLink activeClassName="is-active" className="dropdown-item fw-bold" to="/student/Notifications">Notification</NavLink></li>
+                      <li><NavLink activeClassName="is-active" className="dropdown-item fw-bold" to="/student/Attendance">Attendance</NavLink></li>
+                      <li><NavLink activeClassName="is-active" className="dropdown-item fw-bold" to="/student/Performance">Performance</NavLink></li>
                       <li><hr className="dropdown-divider" /></li>
   
                     </ul>
                   </li>
   
                   <li className="nav-item">
-                    <a className="nav-link" href="#">About</a>
+                    <NavLink activeClassName="is-active" className="btn btn-light btn-outline-info fw-bold" to="#">About</NavLink>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" href="#">Contact</a>
+                    <NavLink activeClassName="is-active" className="btn btn-light btn-outline-info fw-bold" to="#">Contact</NavLink>
                   </li>
   
   
                 </ul>
                 <div className="d-flex align-items-center" >
-                  <a href='/login'><button className="btn  btn-outline-success border-1 border-primary" type="button">Log in <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
-                    <path fillRule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z" />
-                    <path fillRule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z" />
-                  </svg></button></a>
-                  <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                    <div className="container-fluid">
-                      <ul className="navbar-nav">
-  
-                        <li className="nav-item dropdown">
-                          <a
-                            className="nav-link dropdown-toggle hidden-arrow"
-                            href="#"
-                            id="navbarDropdownMenuLink"
-                            role="button"
-                            data-mdb-toggle="dropdown"
-                            aria-expanded="false"
-                          >
-                            <i className="fas fa-bell"></i>
-  
-                          </a>
-                          <ul
-                            className="dropdown-menu dropdown-menu-end"
-                            aria-labelledby="navbarDropdownMenuLink"
-                          >
-  
-                            <li>
-                              <a className="dropdown-item" href="#">Something else here</a>
-                            </li>
-                          </ul>
-                        </li>
-  
-                      </ul>
-                    </div>
-                  </nav>
+                  
                   <div className="dropdown">
-                    <a
-                      className="dropdown-toggle d-flex align-items-center hidden-arrow"
-                      href="#"
-                      id="navbarDropdownMenuAvatar"
-                      role="button"
-                      data-mdb-toggle="dropdown"
-                      aria-expanded="false"
-                    >
-                      <img
-                        src="/assets/images/logo1.png"
-                        className="rounded-circle"
-                        height="25"
-                        alt="Black and White Portrait of a Man"
-                        loading="lazy"
-                      />
-                    </a>
+                        <button className="btn btn-light btn-outline-info dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          <img
+                          src="/assets/images/logo1.png"
+                          className="rounded-circle"
+                          height="25"
+                          alt="Black and White Portrait of a Man"
+                          loading="lazy"
+                        />
+                        </button>
+                      
                     <ul
                       className="dropdown-menu dropdown-menu-end"
                       aria-labelledby="navbarDropdownMenuAvatar"
                     >
                       <li>
-                        <a className="dropdown-item" href="#">My profile</a>
+                        <NavLink activeClassName="is-active" className="dropdown-item fw-bold" to="#">My profile</NavLink>
                       </li>
                       <li>
-                        <a className="dropdown-item" href="#">Settings</a>
+                        <NavLink activeClassName="is-active" className="dropdown-item fw-bold" to="#">Settings</NavLink>
                       </li>
                       <li>
-                        <a className="dropdown-item" href="#">Logout</a>
+                        <button className="dropdown-item fw-bold" onClick={()=>logoutHandler()}>Logout</button>
                       </li>
                     </ul>
                   </div>
-  
                 </div>
               </div>
             </div>

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Chart from "react-google-charts";
+import { Link } from "react-router-dom";
 
 
 const StudentHome = () => {
@@ -36,9 +37,15 @@ const StudentHome = () => {
     },
 ]);
     return (
-        <div className="home">
-
-            <section>
+        <div className="home container">
+          <section className="vh-100 d-flex justify-content-center align-items-center bg-warning">
+            <div className="">
+            <div className="h1 fw-bolder fs-1 text-center my-5">Hello, Welcome to Dashboard</div>
+            </div>
+            
+          </section>
+          <br/><br/><br/>
+            <section className="bg-danger">
             <h1>performance graph</h1>
             <Chart
                 chartType="ScatterChart"
@@ -48,17 +55,17 @@ const StudentHome = () => {
                 legendToggle
                 />
             </section>
-            <section>
+            <section className="bg-success">
             <h1>cards</h1>
             <div className="row">
-            { cardData.map((card)=>{
+            { cardData.map((card,index)=>{
                 return(    
-            <div className="card col-4 mx-auto mb-3" style={{width: "18rem"}}>
+            <div className="card col-4 mx-auto mb-3" style={{width: "18rem"}} key={index}>
             <img src={card.image} className="card-img-top" alt="..."/>
             <div className="card-body">
                 <h6 className="card-title">{card.title}</h6>
                 <p className="card-text">{card.desc}</p>
-                <a href={card.link} className="mx-auto"><button className="btn btn-primary">Go</button></a>
+                <Link to={card.link} className="mx-auto"><button className="btn btn-primary">Go</button></Link>
             </div>
             </div>
             );
@@ -66,7 +73,7 @@ const StudentHome = () => {
         }
         </div>
             </section>
-            <section>
+            <section className="bg-info">
             <h1>time table</h1>
             <table className="table">
   <thead>
@@ -92,7 +99,7 @@ const StudentHome = () => {
     </tr>
     <tr>
       <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
+      <td colSpan="2">Larry the Bird</td>
       <td>@twitter</td>
     </tr>
   </tbody>

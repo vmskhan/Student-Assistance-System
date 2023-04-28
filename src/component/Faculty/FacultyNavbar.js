@@ -38,6 +38,13 @@ const FacultyNavbar=()=>{
                   />
                 </Link>
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                <li><NavLink activeClassName="is-active" className="dropdown-item fw-bold" to="/faculty/Notes">Notes</NavLink></li>
+                      <li><NavLink activeClassName="is-active" className="dropdown-item fw-bold" to="/Feature/Mock">Mock interview</NavLink></li>
+                      <li><NavLink activeClassName="is-active" className="dropdown-item fw-bold" to="/Feature/Selflearn">Self-learning</NavLink></li>
+                      <li><NavLink activeClassName="is-active" className="dropdown-item fw-bold" to="/Feature/Notify">Notification</NavLink></li>
+                      <li><NavLink activeClassName="is-active" className="dropdown-item fw-bold" to="/Feature/Attendance">Attendance</NavLink></li>
+                      <li><NavLink activeClassName="is-active" className="dropdown-item fw-bold" to="/Feature/Performance">Performance</NavLink></li>
+                      {/* <li><hr className="dropdown-divider" /></li> */}
                   {/* <li className="nav-item">
   
                     <NavLink activeClassName="is-active" className="btn btn-light btn-outline-danger active fw-bold" aria-current="page" to="/faculty/home">Home</NavLink>

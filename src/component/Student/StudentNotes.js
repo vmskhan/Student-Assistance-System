@@ -20,8 +20,14 @@ export const StudentNotes = () => {
     ]);
     return (
         <div className='Notes'>
+             <section className="vh-100 d-flex justify-content-center align-items-center bg-warning">
+            <div className="">
+            <div className="h1 fw-bolder fs-1 text-center my-5">Notes</div>
+            </div>
+            
+          </section>
             <div>
-                <h1 className='text-center mb-5'>NOTES</h1>
+                {/* <h1 className='text-center mb-5'>NOTES</h1> */}
             <div className="row mb-5">
                 <div className="col-5 mx-auto">
                 <div className="input-group">

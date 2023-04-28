@@ -35,36 +35,38 @@ const StudentNavbar=()=>{
                     loading="lazy"
                   />
                 </Link>
-                <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li className="nav-item">
+                {/* <ul className="navbar-nav me-auto mb-2 mb-lg-0"> */}
+                  {/* <li className="nav-item">
   
                     <NavLink activeClassName="is-active" className="active fw-bold btn btn-light btn-outline-info" aria-current="page" to="/student/home">Home</NavLink>
-                  </li>
-                  <li className="nav-item dropdown">
-                    <Link className="btn btn-light btn-outline-info dropdown-toggle fw-bold" to="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  </li> */}
+                  {/* <li className="nav-item dropdown"> */}
+                    {/* <Link className="btn btn-light btn-outline-info dropdown-toggle fw-bold" to="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       Feature
-                    </Link>
-                    <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <li><NavLink activeClassName="is-active" className="dropdown-item fw-bold" to="/student/Notes">Notes</NavLink></li>
-                      <li><NavLink activeClassName="is-active" className="dropdown-item fw-bold" to="/student/Mock">Mock interview</NavLink></li>
-                      <li><NavLink activeClassName="is-active" className="dropdown-item fw-bold" to="/student/Selflearn">Self-learning</NavLink></li>
-                      <li><NavLink activeClassName="is-active" className="dropdown-item fw-bold" to="/student/Notifications">Notification</NavLink></li>
-                      <li><NavLink activeClassName="is-active" className="dropdown-item fw-bold" to="/student/Attendance">Attendance</NavLink></li>
-                      <li><NavLink activeClassName="is-active" className="dropdown-item fw-bold" to="/student/Performance">Performance</NavLink></li>
-                      <li><hr className="dropdown-divider" /></li>
+                    </Link> */}
+                    {/* <ul className="dropdown-menu" aria-labelledby="navbarDropdown"> */}
+                    
+                    <ul className="navbar-nav me-auto mb-2 mb-lg-0" aria-labelledby="navbarDropdown">
+                      <li><NavLink activeClassName="is-active" className="fw-bold btn btn-outline-light border-0" to="/student/Notes">Notes</NavLink></li>
+                      <li><NavLink activeClassName="is-active" className="btn btn-outline-light border-0 fw-bold" to="/student/Mock">Mock interview</NavLink></li>
+                      <li><NavLink activeClassName="is-active" className="btn btn-outline-light border-0 fw-bold" to="/student/Selflearn">Self-learning</NavLink></li>
+                      <li><NavLink activeClassName="is-active" className="btn btn-outline-light border-0 fw-bold" to="/student/Notifications">Notification</NavLink></li>
+                      <li><NavLink activeClassName="is-active" className="btn btn-outline-light border-0 fw-bold" to="/student/Attendance">Attendance</NavLink></li>
+                      <li><NavLink activeClassName="is-active" className="btn btn-outline-light border-0 fw-bold" to="/student/Performance">Performance</NavLink></li>
+                      {/* <li><hr className="dropdown-divider" /></li> */}
   
                     </ul>
-                  </li>
+                  {/* </li> */}
   
-                  <li className="nav-item">
+                  {/* <li className="nav-item">
                     <NavLink activeClassName="is-active" className="btn btn-light btn-outline-info fw-bold" to="#">About</NavLink>
                   </li>
                   <li className="nav-item">
                     <NavLink activeClassName="is-active" className="btn btn-light btn-outline-info fw-bold" to="#">Contact</NavLink>
-                  </li>
+                  </li> */}
   
   
-                </ul>
+                {/* </ul> */}
                 <div className="d-flex align-items-center" >
                   
                   <div className="dropdown">

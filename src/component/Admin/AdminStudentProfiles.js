@@ -1,4 +1,4 @@
-import axios from "axios";
+import proxyAxios from "../../axiosMiddleware";
 import { useEffect, useState } from "react";
 
 const AdminStudentProfiles=()=>{
@@ -10,7 +10,7 @@ const [searchTerm,setSearchTerm]=useState('');
     },[])
     
     const getStudentProfiles=async()=>{
-        axios.get('/api/admin/getStudents')
+        proxyAxios.get('/api/admin/getStudents')
     .then((res)=>res.data)
     .then((data)=>{
       console.log(data);
@@ -19,7 +19,7 @@ const [searchTerm,setSearchTerm]=useState('');
     }
     
     const updateStudentProfile=async(accId,newStatus)=>{
-        axios.put('/api/admin/updateAccStatus',{'accId':accId,'status':newStatus})
+        proxyAxios.put('/api/admin/updateAccStatus',{'accId':accId,'status':newStatus})
     .then((res)=>res.data)
     .then((data)=>{
       console.log(data);
@@ -29,7 +29,7 @@ const [searchTerm,setSearchTerm]=useState('');
     }
     
     const deleteStudentProfile=async(accId)=>{
-        axios.delete('/api/admin/deleteProfile/'+accId)
+        proxyAxios.delete('/api/admin/deleteProfile/'+accId)
     .then((res)=>res.data)
     .then((data)=>{
       console.log(data);

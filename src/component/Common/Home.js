@@ -11,10 +11,10 @@ const Home = () => {
   const navigate=useNavigate();
   const user=JSON.parse(localStorage.getItem('userInfo'));
 
-  useEffect(()=>{
-    if(user && isLoggedIn)
-        navigate('/'+user.role+'/home');
-      },[isLoggedIn]);
+  // useEffect(()=>{
+  //   if(user && isLoggedIn)
+  //       navigate('/'+user.role+'/home');
+  //     },[isLoggedIn]);
 
     const [cardData,setCardData]=useState([
         {

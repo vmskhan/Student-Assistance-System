@@ -1,4 +1,4 @@
-import axios from 'axios';
+import proxyAxios from '../../axiosMiddleware';
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import './LoginForm.css';
@@ -16,10 +16,10 @@ const user=JSON.parse(localStorage.getItem('userInfo'));
   const [error, setError] = useState('');
   const navigate=useNavigate();
 
-  useEffect(()=>{
-    if(user && isLoggedIn)
-        navigate('/'+user.role+'/home');
-      },[]);
+  // useEffect(()=>{
+  //   if(user && isLoggedIn)
+  //       navigate('/'+user.role+'/home');
+  //     },[]);
   function validateForm() {
     return email.length > 0 && password.length > 0;
   }
@@ -36,7 +36,7 @@ const user=JSON.parse(localStorage.getItem('userInfo'));
       email:email,
       password:password,
     }
-    axios.post('/api/users/login',data)
+    proxyAxios.post('/api/users/login',data)
     .then((res)=>res.data)
     .then((data)=>{
       console.log(data);

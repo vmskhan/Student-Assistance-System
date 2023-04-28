@@ -1,4 +1,4 @@
-import axios from 'axios';
+import proxyAxios from '../../axiosMiddleware';
 import React, { useEffect, useState } from 'react'
 import './LoginForm.css';
 import { Link, useNavigate } from 'react-router-dom';
@@ -20,10 +20,10 @@ export const Faculty = () => {
     const [error, setError] = useState('');
      const user=JSON.parse(localStorage.getItem('userInfo'));
 
-    useEffect(()=>{
-        if(user && isLoggedIn)
-            navigate('/'+user.role+'/home');
-          },[]);
+    // useEffect(()=>{
+    //     if(user && isLoggedIn)
+    //         navigate('/'+user.role+'/home');
+    //       },[]);
 
     function validateForm() {
         return email.length > 0 && password.length > 0;
@@ -44,7 +44,7 @@ export const Faculty = () => {
             pic:pic,
             role:"faculty",
           }
-          axios.post('/api/users/register',data)
+          proxyAxios.post('/api/users/register',data)
           .then((res)=>res.data)
           .then((data)=>{
             console.log(data);

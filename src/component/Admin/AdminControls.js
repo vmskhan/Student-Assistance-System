@@ -1,4 +1,4 @@
-import axios from "axios";
+import proxyAxios from "../../axiosMiddleware";
 import { useEffect, useState } from "react";
 
 const AdminControls=()=>{
@@ -11,7 +11,7 @@ const AdminControls=()=>{
        getAdminControls(); 
     },[])
 const getAdminControls=async()=>{
-    axios.get('/api/admin/getAdminControls')
+    proxyAxios.get('/api/admin/getAdminControls')
     .then((res)=>res.data)
     .then((data)=>{
         console.log(data);
@@ -28,7 +28,7 @@ const getAdminControls=async()=>{
 
     const createDefaultAdminControls=()=>{
         console.log('reeaching here')
-        axios.post('/api/admin/createAdminControls')
+        proxyAxios.post('/api/admin/createAdminControls')
         .then((res)=>res.data)
         .then((data)=>{
             console.log(data);
@@ -39,7 +39,7 @@ const getAdminControls=async()=>{
     const updateAdminControls=()=>{
         console.log('reeaching here')
         
-        axios.put('/api/admin/updateAdminControls',adminData)
+        proxyAxios.put('/api/admin/updateAdminControls',adminData)
         .then((res)=>res.data)
         .then((data)=>{
             console.log(data);

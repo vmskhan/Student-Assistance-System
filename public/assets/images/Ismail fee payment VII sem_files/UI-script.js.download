@@ -1,0 +1,147 @@
+$(document).ready(function() {	
+	
+	/*import html files*/
+		inc.includeHTML();	
+   
+});
+
+$(document).ready(function(){ 
+	/*Date Picker Initiation*/
+	$('.datepicker').datepicker();
+	/*Date Picker Initiation*/
+	   
+ /*Data table Functions*/
+      $('#pendingApplication').DataTable({
+		 
+		sDom: "B<'row'><'row'<'col-md-6 col-6 col-sm-6 col-lg-6 '><'col-md-6 col-6 col-sm-6 col-lg-6'>r>t<'row'<'col-md-6 col-6 col-sm-6 col-lg-6'i><'col-md-6 col-6 col-sm-6 col-lg-6'p>>",
+		 
+		lengthMenu: [[7, 14, 21, -1], [7, 14, 21, "All"]],
+		scrollX: true,
+		
+			language: {
+			paginate: {
+			  next: '<i class="fas fa-angle-right fa-lg"></i>', 
+			  previous: '<i class="fas fa-angle-left fa-lg"></i>' 
+			}
+		  }
+
+	});
+	
+	$('#linkRequest').DataTable({
+		 
+		sDom: "B<'row'><'row'<'col-md-6 col-6 col-sm-6 col-lg-6 '><'col-md-6 col-6 col-sm-6 col-lg-6'>r>t<'row'<'col-md-6 col-6 col-sm-6 col-lg-6'i><'col-md-6 col-6 col-sm-6 col-lg-6'p>>",
+		 
+		lengthMenu: [[5, 10, 15, -1], [5, 10, 15, "All"]],
+		scrollX: true,
+		
+			language: {
+			paginate: {
+			  next: '<i class="fas fa-angle-right fa-lg"></i>', 
+			  previous: '<i class="fas fa-angle-left fa-lg"></i>' 
+			}
+		  }
+
+	});
+	
+	$('#OnboardingDataTable_BranchStatus').DataTable({
+		 
+		sDom: "B<'row'><'row'<'col-md-6 col-6 col-sm-6 col-lg-6 'l><'col-md-6 col-6 col-sm-6 col-lg-6'f>r>t<'row'<'col-md-6 col-6 col-sm-6 col-lg-6'i><'col-md-6 col-6 col-sm-6 col-lg-6'p>>",
+		 
+		lengthMenu: [[5, 10, 15, -1], [5, 10, 15, "All"]],
+		scrollX: true,
+		
+		language: {
+			paginate: {
+			  next: '<i class="fas fa-angle-right fa-lg"></i>', 
+			  previous: '<i class="fas fa-angle-left fa-lg"></i>' 
+			}
+		  }
+		
+	}); 
+ /*Data table Functions*/
+ 
+  /*Data table Filter Functions*/
+ 
+       var pendingTable=$('#OnboardingDataTable_Notify').DataTable({
+		 
+		sDom: "B<'row'><'row'<'col-md-6 col-6 col-sm-6 col-lg-6'><'col-md-6 col-6 col-sm-6 col-lg-6'>r>t<'row'<'col-md-6 col-6 col-sm-6 col-lg-6'i><'col-md-6 col-6 col-sm-6 col-lg-6'p>>",
+		 
+		lengthMenu: [[6, 12, 18, -1], [6, 12, 18, "All"]],
+		scrollX: true,
+		
+		language: {
+			paginate: {
+			  next: '<i class="fas fa-angle-right fa-lg"></i>', 
+			  previous: '<i class="fas fa-angle-left fa-lg"></i>' 
+			}
+		  }
+	});
+	
+		var autoIncrement=0;
+		$('#OnboardingDataTable_Notify thead tr th').each(function(){
+		var optionval=$.trim($(this).text());
+		
+			$('#select_search').append("<option value='"+autoIncrement+"'>"+$.trim($(this).text())+"</option>");
+			autoIncrement++;
+		});
+		
+		var autoIncrement=0;
+		$('#pendingApplication thead tr th').each(function(){
+		var optionval=$.trim($(this).text());
+		
+			$('#select_search').append("<option value='"+autoIncrement+"'>"+$.trim($(this).text())+"</option>");
+			autoIncrement++;
+		});
+		
+		var autoIncrement=0;
+		$('#OnboardingDataTable_BranchStatus thead tr th').each(function(){
+		var optionval=$.trim($(this).text());
+		
+			$('#select_search_1').append("<option value='"+autoIncrement+"'>"+$.trim($(this).text())+"</option>");
+			autoIncrement++;
+		});
+		
+		//custom serrch based on the column
+	$(document).on('change keyup click',"#input_search,#searchBtn",function(){
+		var serchVal=$('#input_search').val();
+		tableSearch(serchVal);
+	});
+	
+	function tableSearch(serchVal){
+		var selectedPosition=$('#select_search').val();
+		if(selectedPosition)
+		{
+			pendingTable.columns(selectedPosition).search(serchVal).draw();
+		
+		}
+	} 
+	
+	 /*Data table Filter Functions*/
+ 
+   
+/*Toggle plus minus icon on show hide of collapse element*/
+             $(document).on('show.bs.collapse','.collapse', function(e){
+				
+             	$(this).prev(".card-header").find(".faIcon").removeClass("iconCollapse").addClass("iconExpand");
+             });
+			 $(document).on('hide.bs.collapse',".collapse", function(e){
+				
+             	$(this).prev(".card-header").find(".faIcon").removeClass("iconExpand").addClass("iconCollapse");
+             });
+/*Toggle plus minus icon on show hide of collapse element*/
+   
+   /*IPad KeyPad Hide*/
+ if( navigator.userAgent.match(/Android/i)
+ || navigator.userAgent.match(/iPhone/i)
+ || navigator.userAgent.match(/iPad/i)
+ || navigator.userAgent.match(/iPod/i)
+ || navigator.userAgent.match(/BlackBerry/i)
+ || navigator.userAgent.match(/Windows Phone/i)
+ ){
+    $('#enable-key-checkipad').hide();
+  }
+/*IPad KeyPad Hide */
+
+
+});
+

@@ -1,42 +1,78 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
+import { getNotes, sendNewNotes } from '../../store/faculty-actions';
+import { useDispatch, useSelector } from 'react-redux';
 
 
 
 export const FacultyNotes = () => {
-    const [notes,setNotes]=useState([
-        {
-            title:"Data Science using R",
-            description:"UNITS:1-5",
-            fileLink:"",
-            createdBy:"sridevi maam",
-        },
-        {
-            title:"Distributed System",
-            description:"UNIT:1-5",
-            fileLink:"",
-            createdBy:"maniza maam",
+    const baseUrl=process.env.REACT_APP_IMAGE_UPLOADS_BASE_URL;
+    const sems=[1,2,3,4,5,6,7,8];
+    const [title,setTitle]=useState("");
+    const [description,setDescription]=useState("");
+    const [subjectId,setSubjectId]=useState("0");
+    const [fileLink,setFileLink]=useState({data:''});
+    const [semester,setSemester]=useState(1);
+    const [year,setYear]=useState(1);
+    const [author,setAuthor]=useState("");
+    const notes=useSelector(state=>state.faculty.notes);
+    const dispatch=useDispatch();
+    const userInfo=JSON.parse(localStorage.getItem('userInfo'));
+    
+useEffect(()=>{
+    dispatch(getNotes());
+},[])
+
+    const handleSemesterChange=(value)=>{
+        setSemester(value);
+        setYear(Math.ceil(value/2));
+    }
+    const addNewNotes=()=>{
+        let data={
+            title,
+            description,
+            author,
+            createdBy:userInfo.name,
+            semester,
+            year,
+            fileLink,
+            subjectId,
         }
-    ]);
+    console.log(data);
+    dispatch(sendNewNotes(data));
+    }
+
+
     return (
         <div className='Notes'>
             <div>
                 <h1 className='text-center mb-5'>NOTES</h1>
-            <div className="row mb-5">
-                <div className="col-5 mx-auto">
-                <div className="input-group">
-                        <input type="search" placeholder="search notes" id="form1" className="form-control" />
-                        <button type="button" className="btn btn-primary">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-search" viewBox="0 0 16 16">
-  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-</svg>
-                    </button>
+            <div className="d-flex flex-row p-2 mb-5 justify-content-evenly">
+                <div className='col-3'>
+
                 </div>
+                <div className="col-5 pe-5">
+                    {/* <div className='row'> */}
+                        <div className="input-group">
+                                <input type="search" placeholder="search notes" id="form1" className="form-control" />
+                                <button type="button" className="btn btn-primary">
+                                <i className="bi bi-search"></i>
+                            </button>
+                        </div>
+                    {/* </div> */}
+                </div>
+                <div className='col-2 text-end'>
+                    {/* <!-- Button trigger modal --> */}
+                    <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newNotesModal">
+                    <i className="bi bi-plus-lg"></i> Add Notes
+                    </button>
                 </div>
             </div>
                     <div className="row">
+                        {notes.length===0 &&
+                        <div className='text-center fs-5 text-muted'>No notes to display</div>}
                         {
-                            notes.map((note)=>{
+                           notes.map((note)=>{
                                 return(                        
                                 <div className="col-5 mx-auto">
                                 <div className="card">
@@ -45,9 +81,10 @@ export const FacultyNotes = () => {
                                     <p className="card-text">
                                         {note.description}
                                         <br/>
+                                        Author:{note.author}<br/>
                                         Created by: {note.createdBy}
                                         </p>
-                                    <Link to={note.fileLink} className="btn btn-primary">OPEN</Link>
+                                    <a download href={baseUrl+note.fileLink} className="btn btn-primary">Download</a>
                                 </div>
                             </div>
                         </div>
@@ -57,6 +94,69 @@ export const FacultyNotes = () => {
                      }
                     </div>               
             </div>
+            
+
+{/* <!-- Modal --> */}
+<div className="modal fade" id="newNotesModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div className="modal-dialog">
+    <div className="modal-content">
+      <div className="modal-header">
+        <h1 className="modal-title fs-5" id="exampleModalLabel">Add New Notes</h1>
+        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div className="modal-body">
+        <div className='input-group mb-3'>
+            <label className=' input-group-text'>Title</label>
+            <input type='text' className="form-control" name='title' placeholder="Enter title" value={title} onChange={(e)=>setTitle(e.target.value)} />
+        </div>
+        <div className='input-group mb-3'>
+            <label className=' input-group-text'>Description</label>
+            <textarea className="form-control" name='description' placeholder="Enter Description" value={description} onChange={(e)=>setDescription(e.target.value)} />
+        </div>
+        <div className='input-group mb-3'>
+            <label className=' input-group-text'>Author</label>
+            <input type='text' className="form-control" name='author' placeholder="Enter Author Name" value={author} onChange={(e)=>setAuthor(e.target.value)} />
+        </div>
+        
+        {/* <div className='input-group mb-3'>
+            <label className=' input-group-text'>Subject</label>
+            <select type='text' className="form-select" name='subject' placeholder="select subject" value={subjectId} onChange={(e)=>setSubjectId(e.target.value)} >
+            <option selected>Select Subject</option>
+                { 
+                subjects.map(sub=>{
+                return <option value={sub.code}>{sub.name}</option>
+                })
+                }
+            </select>
+        </div> */}
+
+        <div className='input-group mb-3'>
+            <label className=' input-group-text'>Semester</label>
+            <select type='text' className="form-select" name='semester' placeholder="select semester" value={semester} onChange={(e)=>handleSemesterChange(e.target.value)} >
+            <option selected>Select Semester</option>
+                { 
+                sems.map(ele=>{
+                return <option value={ele}>{ele}</option>
+                })
+                }
+            </select>
+        </div>
+        <div className='input-group mb-3'>
+            <label className='input-group-text'>Year</label>
+            <input type='text' disabled className="form-control" name='year' value={year} />
+        </div>
+        <div className='mb-3'>
+            <label className='form-label'>File</label>
+            <input type='file' className="form-control" name='notesFile' onChange={(e)=>setFileLink({data:e.target.files[0]})} />
+        </div>
+      </div>
+      <div className="modal-footer">
+        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" className="btn btn-primary" onClick={addNewNotes}>Add</button>
+      </div>
+    </div>
+  </div>
+</div>
         </div>
     )
 }

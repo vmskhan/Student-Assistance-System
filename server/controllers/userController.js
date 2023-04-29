@@ -2,24 +2,29 @@
 const asyncHandler=require('express-async-handler');
 const User=require('../models/userModel');
 const generateToken = require('../utils/generateToken');
-
+const upload=require('./../middlewares/upload');
 
 const registerUser =asyncHandler(async(req,res) => {
-    const {name, email, password, role,pic,id} = req.body;
-
+    await upload(req,res);
+    console.log(req);
+    const {data} = req.body;
+    let newUserData=JSON.parse(data);
     
     console.log('register user method called');
-    const userExists= await User.findOne({email});
+    const userExists= await User.findOne({email:newUserData.email});
 
     if(userExists){
         res.status(400)
         throw new Error('User Already Exists');
     }
     console.log('user doesnt exist');
-    const user=await User.create({
-            name,email,password,role,pic,status:"active",id
-        });
     
+    newUserData.status="active";
+    console.log(req.files);
+    if(req.files && req.files[0].filename)
+        newUserData.pic=req.files[0].filename;
+
+    const user=await User.create(newUserData);
         console.log('user created');
         console.log(user);
     if(user){

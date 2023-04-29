@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap";
+import "bootstrap-icons/font/bootstrap-icons.css";
 import Notes from './component/Dropdown/Features/Notes';
 import { BrowserRouter, Routes, useNavigate } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 import StudentRouter from './component/Student/StudentRouter';
-import LoginForm from './component/Common/LoginForm';
-import Student from './component/Common/Stdregister';
-import Faculty from './component/Common/Facultyreg';
 import AdminRouter from './component/Admin/AdminRouter'
 import AdminHome from './component/Admin/AdminHome';
 import AdminStudentProfiles from './component/Admin/AdminStudentProfiles';
@@ -33,6 +31,12 @@ import Notify from './component/Dropdown/Features/Notify';
 import Attendance from './component/Dropdown/Features/Attendance';
 import { useDispatch, useSelector } from 'react-redux';
 import { authActions } from './store/authSlice';
+import Login from './component/Common/Login';
+import StudentRegister from './component/Common/StudentRegister';
+import FacultyRegister from './component/Common/FacultyRegister';
+import StudentProfile from './component/Student/StudentProfile';
+import FacultyProfile from './component/Faculty/FacultyProfile';
+import AdminProfile from './component/Admin/AdminProfile';
 
 
 const App = () => {
@@ -58,10 +62,9 @@ console.log(isLoggedIn);
       <BrowserRouter>
 
         <Routes>
-          <Route path='/login' element={<LoginForm/>} exact />
-
-          <Route path='/StudentRegister' element={<Student />} exact />
-          <Route path='/FacultyRegister' element={<Faculty />} exact />
+          <Route path='/login' element={<Login/>} exact />
+          <Route path='/StudentRegister' element={<StudentRegister />} exact />
+          <Route path='/FacultyRegister' element={<FacultyRegister />} exact />
           <Route path='/' element={<Home />} exact />
 
           {isLoggedIn &&
@@ -84,6 +87,7 @@ console.log(isLoggedIn);
             <Route path="Selflearn" element={<StudentSelfLearn />} exact />
             <Route path="Notifications" element={<StudentNotifications />} exact />
             <Route path="Attendance" element={<StudentAttendance />} exact />
+            <Route path="Profile" element={<StudentProfile />} exact />
           </Route>
           <Route path='/Faculty' element={<FacultyRouter />} exact>
             <Route path='home' element={<FacultyHome />} exact />
@@ -94,6 +98,7 @@ console.log(isLoggedIn);
             <Route path="Notifications" element={<StudentNotifications />} exact />
             <Route path="Attendance" element={<StudentAttendance />} exact />
             <Route path="StudentDetails" element={<StudentAttendance />} exact />
+            <Route path="Profile" element={<FacultyProfile />} exact />
           </Route>
           <Route path='/Admin' element={<AdminRouter />} exact>
             <Route path='home' element={<AdminHome />} exact />
@@ -103,6 +108,7 @@ console.log(isLoggedIn);
             <Route path="Performance" element={<StudentPerformance />} exact />
             <Route path="Notifications" element={<StudentNotifications />} exact />
             <Route path="Attendance" element={<StudentAttendance />} exact />
+            <Route path="Profile" element={<AdminProfile />} exact />
           </Route>
           </>
           }

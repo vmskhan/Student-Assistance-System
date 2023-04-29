@@ -3,11 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { authActions } from "../../store/authSlice";
 const AdminNavbar=()=>{
-
+    const baseUrl=process.env.REACT_APP_IMAGE_UPLOADS_BASE_URL;
     const isLoggedIn=useSelector(state=>state.auth.isLoggedIn);  
     const dispatch=useDispatch();
     const navigate=useNavigate();
-
+    const userInfo=JSON.parse(localStorage.getItem('userInfo'));
     const logoutHandler=()=>{
       localStorage.removeItem('userInfo');
       dispatch(authActions.logout());
@@ -37,57 +37,39 @@ const AdminNavbar=()=>{
                   />
                 </Link>
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                  {/* <li className="nav-item">
-  
-                    <NavLink activeClassName="is-active" className="btn btn-light btn-outline-success fw-bold" aria-current="page" to="/admin/home">Home</NavLink>
-                  </li> */}
-                  {/* <li className="nav-item dropdown">
-                    <Link className="btn btn-light btn-outline-success fw-bold dropdown-toggle" to="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Features
-                    </Link>
-                    <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <li><NavLink activeClassName="is-active" className="dropdown-item fw-bold" to="/admin/StudentProfiles">Student Profiles</NavLink></li>
-                      <li><NavLink activeClassName="is-active" className="dropdown-item fw-bold" to="/admin/FacultyProfiles">Faculty Profiles</NavLink></li>
-                      <li><NavLink activeClassName="is-active" className="dropdown-item fw-bold" to="/admin/Attendance">Attendance</NavLink></li>
-                      <li><NavLink activeClassName="is-active" className="dropdown-item fw-bold" to="/admin/Performance">Performance</NavLink></li>
-                      <li><hr className="dropdown-divider" /></li>
-  
-                    </ul>
-                  </li> */}
-{/*   
-                  <li className="nav-item">
-                    <NavLink activeClassName="is-active" className="btn btn-light btn-outline-success fw-bold" to="/admin/Controls">Controls</NavLink>
-                  </li> */}
-                  {/* <li className="nav-item">
-                    <NavLink activeClassName="is-active" className="btn btn-light btn-outline-success fw-bold" to="/admin/Notifications">Notifications</NavLink>
-                  </li> */}
-  
-  
+                  <li><NavLink activeClassName="is-active" className="btn btn-outline-light border-0 fw-bold fst-italic" to="/admin/StudentProfiles">Student Profiles</NavLink></li>
+                  <li><NavLink activeClassName="is-active" className="btn btn-outline-light border-0 fw-bold fst-italic" to="/admin/FacultyProfiles">Faculty Profiles</NavLink></li>
+                  <li><NavLink activeClassName="is-active" className="btn btn-outline-light border-0 fw-bold fst-italic" to="/admin/Attendance">Attendance</NavLink></li>
+                  <li><NavLink activeClassName="is-active" className="btn btn-outline-light border-0 fw-bold fst-italic" to="/admin/Performance">Performance</NavLink></li>
+                  <li><NavLink activeClassName="is-active" className="btn btn-outline-light border-0 fw-bold fst-italic" to="/admin/Controls">Controls</NavLink></li>
+                  <li><NavLink activeClassName="is-active" className="btn btn-outline-light border-0 fw-bold fst-italic" to="/admin/Notifications">Notifications</NavLink></li>
                 </ul>
                 <div className="d-flex align-items-center" >
                   
                   <div className="dropdown">
                   <button className="btn btn-light btn-outline-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      <img
+                     {userInfo.pic==='Nil'?( <img
                         src="/assets/images/logo1.png"
                         className="rounded-circle"
-                        height="25"
+                        height="65vh"
                         alt="Black and White Portrait of a Man"
                         loading="lazy"
-                      />
+                      />):(
+                        <img src={baseUrl+userInfo.pic} height="65vh" alt="Profile pic"/>
+                      )}
                     </button>
                     <ul
                       className="dropdown-menu dropdown-menu-end"
                       aria-labelledby="navbarDropdownMenuAvatar"
                     >
                       <li>
-                        <NavLink activeClassName="is-active" className="dropdown-item fw-bold" to="#">My profile</NavLink>
+                        <NavLink activeClassName="is-active" className="dropdown-item fw-bold" to="/admin/Profile">My profile</NavLink>
                       </li>
-                      <li>
+                      {/* <li>
                         <NavLink activeClassName="is-active" className="dropdown-item fw-bold" to="#">Settings</NavLink>
-                      </li>
+                      </li> */}
                       <li>
-                        <button className="dropdown-item fw-bold" onClick={()=>logoutHandler()}>Logout</button>
+                        <button className="dropdown-item fw-bold fs-5" onClick={()=>logoutHandler()}>Logout</button>
                       </li>
                     </ul>
                   </div>

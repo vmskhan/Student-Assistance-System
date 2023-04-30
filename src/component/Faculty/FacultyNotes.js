@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
-import { getNotes, sendNewNotes } from '../../store/faculty-actions';
+import { deleteNotes, getNotes, sendNewNotes } from '../../store/faculty-actions';
 import { useDispatch, useSelector } from 'react-redux';
 
 
@@ -42,7 +42,9 @@ useEffect(()=>{
     dispatch(sendNewNotes(data));
     }
 
-
+const deleteHandler=(id)=>{
+    dispatch(deleteNotes(id));
+}
     return (
         <div className='Notes'>
             <div>
@@ -74,17 +76,36 @@ useEffect(()=>{
                         {
                            notes.map((note)=>{
                                 return(                        
-                                <div className="col-5 mx-auto">
-                                <div className="card">
+                                <div className="col-4 mx-auto">
+                                <div className="card m-3">
+                                    <div className='card-header d-flex justify-content-between'>
+                                        <h5 className="card-title">{note.title}</h5>
+                                        {note.createdBy===userInfo.name &&
+                                        <button className="btn btn-danger"onClick={()=>deleteHandler(note._id)}><i class="bi bi-x-octagon"></i> Delete</button>
+                                        }
+                                    </div>
                                 <div className="card-body">
-                                    <h5 className="card-title">{note.title}</h5>
-                                    <p className="card-text">
-                                        {note.description}
+                                    
+                                        <div className='d-flex justify-content-between'>
+                                            <p className="card-text">
+                                                <span className='fw-bold'>Author:</span> {note.author}
+                                                <br/>
+                                                <span className='fw-bold'>Created by:</span> {note.createdBy}
+                                            </p>
+                                            <p className="card-text">
+                                                <span className='fw-bold'>Semester:</span> {note.semester}
+                                                <br/>
+                                                <span className='fw-bold'>Year:</span> {note.year}
+                                            </p>
+                                        </div>
+                                        <span className='fw-bold'>Description:</span> {note.description}
                                         <br/>
-                                        Author:{note.author}<br/>
-                                        Created by: {note.createdBy}
-                                        </p>
-                                    <a download href={baseUrl+note.fileLink} className="btn btn-primary">Download</a>
+                                        
+                                        {/* Creation Date:{note.creationDate} */}
+                                        
+                                        <div className='text-end'>
+                                             <a download href={baseUrl+note.fileLink} className="btn btn-primary"><i class="bi bi-box-arrow-down"></i> Download</a>
+                                        </div>
                                 </div>
                             </div>
                         </div>

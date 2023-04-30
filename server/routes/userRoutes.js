@@ -3,6 +3,7 @@ const express=require("express");
 const { addEventRegistration} = require("../controllers/RegistrationController");
 const router=express.Router();
 const { authUser, registerUser } = require('../controllers/userController');
+const { getNotes } = require('../controllers/NotesController');
 
 
 // //registration routes
@@ -19,5 +20,6 @@ const { authUser, registerUser } = require('../controllers/userController');
 
 router.route('/login').post(authUser);
 router.route('/register').post(registerUser);
+router.route('/notes').get(getNotes);
 
 module.exports = router;

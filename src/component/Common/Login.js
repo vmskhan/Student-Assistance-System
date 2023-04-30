@@ -73,7 +73,7 @@ const Login=() => {
         <div className="container-fluid">
             
 <div className="row vh-100">
-        <div className="col-6 auth-bg-left-img border-end border-5 border-success">
+        <div className="col-6 auth-bg-left-img">
             <div className="container-fluid">
             <div className="row justify-content-center vh-100">
             <div className="col-9 align-self-center shadow rounded bg-white border border-success border-2 px-5 py-3">
@@ -120,7 +120,7 @@ const Login=() => {
             
         </div>
         </div>
-        <div className="col-6 text-center border-start border-success border-1 auth-bg-right-img">
+        <div className="col-6 text-center auth-bg-right-img">
             <div className="row justify-content-center">
                 <div className="col-12 d-flex flex-wrap vh-100 text-center">
                     <h4 className="text-dark  flex-fill display-5"><img
@@ -130,10 +130,10 @@ const Login=() => {
                   loading="lazy"
                 /> Student Assistance System</h4>
                     <p className="text-dark fw-bolder flex-fill align-self-end mx-2">
-                        Onview is an Online Interview Platform designed to conduct 
-                        interactive sessions between Interviewer and the Interviewee. 
-                        It Provides various features to support a full fledged online assessment.
-                        <br/><span className="text-secondary">&copy; Onview Pvt. Ltd.</span>
+                        Student Assistance System is an Online Platform designed to have 
+                        a single point of accesss to all academic information for the faculty and the students. 
+                        It also provides many features to aid academic duties and also help analyze student performance.
+                        <br/><span className="text-secondary">&copy; SAS Pvt. Ltd.</span>
                     </p>
                 </div> 
             </div>

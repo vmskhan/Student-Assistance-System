@@ -1,34 +1,30 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { getNotesForStudent } from '../../store/student-actions';
 
 
 
 export const StudentNotes = () => {
-    const [notes,setNotes]=useState([
-        {
-            title:"Data Science using R",
-            description:"UNITS:1-5",
-            fileLink:"",
-            createdBy:"sridevi maam",
-        },
-        {
-            title:"Distributed System",
-            description:"UNIT:1-5",
-            fileLink:"",
-            createdBy:"maniza maam",
-        }
-    ]);
+    const baseUrl=process.env.REACT_APP_IMAGE_UPLOADS_BASE_URL;
+    const notes=useSelector(state=>state.student.notes);
+    const dispatch=useDispatch();
+
+    useEffect(()=>{
+        dispatch(getNotesForStudent());
+    },[])
+        
     return (
         <div className='Notes'>
-             <section className="vh-100 d-flex justify-content-center align-items-center bg-warning">
+             <section className="d-flex justify-content-center align-items-center bg-warning">
             <div className="">
-            <div className="h1 fw-bolder fs-1 text-center my-5">Notes</div>
+            <div className="fw-bolder fs-1 text-center my-5">Notes</div>
             </div>
             
           </section>
             <div>
                 {/* <h1 className='text-center mb-5'>NOTES</h1> */}
-            <div className="row mb-5">
+            <div className="row my-5">
                 <div className="col-5 mx-auto">
                 <div className="input-group">
                         <input type="search" placeholder="search notes" id="form1" className="form-control" />
@@ -46,14 +42,31 @@ export const StudentNotes = () => {
                                 return(                        
                                 <div className="col-5 mx-auto">
                                 <div className="card">
+                                <div className='card-header d-flex justify-content-between'>
+                                        <h5 className="card-title">{note.title}</h5>
+                                    </div>
                                 <div className="card-body">
-                                    <h5 className="card-title">{note.title}</h5>
-                                    <p className="card-text">
-                                        {note.description}
+                                    
+                                        <div className='d-flex justify-content-between'>
+                                            <p className="card-text">
+                                                <span className='fw-bold'>Author:</span> {note.author}
+                                                <br/>
+                                                <span className='fw-bold'>Created by:</span> {note.createdBy}
+                                            </p>
+                                            <p className="card-text">
+                                                <span className='fw-bold'>Semester:</span> {note.semester}
+                                                <br/>
+                                                <span className='fw-bold'>Year:</span> {note.year}
+                                            </p>
+                                        </div>
+                                        <span className='fw-bold'>Description:</span> {note.description}
                                         <br/>
-                                        Created by: {note.createdBy}
-                                        </p>
-                                    <Link to={note.fileLink} className="btn btn-primary">OPEN</Link>
+                                        
+                                        {/* Creation Date:{note.creationDate} */}
+                                        
+                                        <div className='text-end'>
+                                             <a download href={baseUrl+note.fileLink} className="btn btn-primary"><i class="bi bi-box-arrow-down"></i> Download</a>
+                                        </div>
                                 </div>
                             </div>
                         </div>

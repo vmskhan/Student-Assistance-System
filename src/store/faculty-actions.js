@@ -30,3 +30,16 @@ export const getNotes=()=>{
         await reqHandler();
     }
 }
+
+export const deleteNotes=(id)=>{
+    return async(dispatch)=>{
+            const reqHandler=async()=>{
+            proxyAxios.delete("/api/faculty/notes/"+id)
+            .then((res)=>res.data)
+            .then((data)=>{
+                dispatch(getNotes());
+            })
+        }
+        await reqHandler();
+    }
+}

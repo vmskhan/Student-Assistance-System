@@ -9,6 +9,7 @@ const NotesModel = new mongoose.Schema({
     year:Number,
     fileLink:String,
     subjectId:String,
+    creationDate:String,
 });
 
 const Notes = mongoose.model("Notes", NotesModel);

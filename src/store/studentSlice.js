@@ -2,11 +2,14 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const studentSlice=createSlice({
     name:'student',
-    initialState:{notes:[]},
+    initialState:{notes:[],notifications:[]},
     reducers:{
         setNotes(state,action){
             state.notes=action.payload;
-        }
+        },
+        setNotifications(state,action){
+            state.notifications=action.payload;
+        },
     }
 });
 

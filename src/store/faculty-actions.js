@@ -43,3 +43,17 @@ export const deleteNotes=(id)=>{
         await reqHandler();
     }
 }
+
+export const getNotificationsForFaculty=()=>{
+    return async(dispatch)=>{
+            const reqHandler=async()=>{
+            proxyAxios.get("/api/faculty/notifications")
+            .then((res)=>res.data)
+            .then((data)=>{
+                // console.log(data)
+                dispatch(facultyActions.setNotifications(data.notifications));
+            })
+        }
+        await reqHandler();
+    }
+}

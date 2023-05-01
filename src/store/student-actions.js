@@ -13,3 +13,16 @@ export const getNotesForStudent=()=>{
         await reqHandler();
     }
 }
+
+export const getNotificationsForStudent=()=>{
+    return async(dispatch)=>{
+            const reqHandler=async()=>{
+            proxyAxios.get("/api/users/notifications")
+            .then((res)=>res.data)
+            .then((data)=>{
+                dispatch(studentActions.setNotifications(data.notifications));
+            })
+        }
+        await reqHandler();
+    }
+}

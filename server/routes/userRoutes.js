@@ -4,6 +4,7 @@ const { addEventRegistration} = require("../controllers/RegistrationController")
 const router=express.Router();
 const { authUser, registerUser } = require('../controllers/userController');
 const { getNotes } = require('../controllers/NotesController');
+const { getUserNotifications } = require('../controllers/NotificationController');
 
 
 // //registration routes
@@ -21,5 +22,6 @@ const { getNotes } = require('../controllers/NotesController');
 router.route('/login').post(authUser);
 router.route('/register').post(registerUser);
 router.route('/notes').get(getNotes);
+router.route('/notifications').get(getUserNotifications);
 
 module.exports = router;

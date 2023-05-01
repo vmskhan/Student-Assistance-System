@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 
 
 const AdminFacultyProfiles=()=>{
+    const baseUrl=process.env.REACT_APP_IMAGE_UPLOADS_BASE_URL;
     const [facultyData,setFacultyData]=useState([{}]);
 const [searchTerm,setSearchTerm]=useState('');
 
@@ -48,7 +49,7 @@ const [searchTerm,setSearchTerm]=useState('');
                 <div className="input-group">
                         <input type="search" onChange={(e)=>setSearchTerm(e.target.value)} placeholder="search faculty id" id="form1" className="form-control" />
                         <button type="button" className="btn btn-primary">
-                        <i class="bi bi-search"></i>
+                        <i className="bi bi-search"></i>
                     </button>
                 </div>
                 </div>
@@ -58,6 +59,7 @@ const [searchTerm,setSearchTerm]=useState('');
                 <thead>
                     <tr>
                     <th scope="col">S.No.</th>
+                    <th scope="col">Pic</th>
                     <th scope="col">Roll No</th>
                     <th scope="col">Name</th>
                     <th scope="col">Email Id</th>
@@ -69,8 +71,22 @@ const [searchTerm,setSearchTerm]=useState('');
                     {facultyData && facultyData.map((student,index)=>{
                         if(searchTerm==='' || student.id.includes(searchTerm))
                         return(
-                    <tr>
-                        <th scope="row">{index+1}</th>
+                    <tr className="text-center">
+                        <td scope="row">{index+1}</td>
+                        <td>
+                        {student.pic!=='Nil'?( 
+                            <img src={baseUrl+student.pic} className="rounded-circle"  height="80vh" alt="profile pic"/>
+                        ):(
+                            <img
+                        src="/assets/images/logo1.png"
+                        className="rounded-circle"
+                        height="80vh"
+                        alt="Black and White Portrait of a Man"
+                        loading="lazy"
+                      />
+                        )
+                        }
+                        </td>
                         <td>{student.id}</td>
                         <td>{student.name}</td>
                         <td>{student.email}</td>

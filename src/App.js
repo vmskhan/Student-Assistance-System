@@ -37,6 +37,8 @@ import FacultyRegister from './component/Common/FacultyRegister';
 import StudentProfile from './component/Student/StudentProfile';
 import FacultyProfile from './component/Faculty/FacultyProfile';
 import AdminProfile from './component/Admin/AdminProfile';
+import AdminNotifications from './component/Admin/AdminNotifications';
+import FacultyNotifications from './component/Faculty/FacultyNotifications';
 
 
 const App = () => {
@@ -95,7 +97,7 @@ console.log(isLoggedIn);
             <Route path="Mock" element={<StudentMockInterview />} exact />
             <Route path="ClassPerformance" element={<StudentPerformance />} exact />
             <Route path="Selflearn" element={<StudentSelfLearn />} exact />
-            <Route path="Notifications" element={<StudentNotifications />} exact />
+            <Route path="Notifications" element={<FacultyNotifications />} exact />
             <Route path="Attendance" element={<StudentAttendance />} exact />
             <Route path="StudentDetails" element={<StudentAttendance />} exact />
             <Route path="Profile" element={<FacultyProfile />} exact />
@@ -106,7 +108,7 @@ console.log(isLoggedIn);
             <Route path='FacultyProfiles' element={<AdminFacultyProfiles />} exact />
             <Route path='Controls' element={<AdminControls />} exact />
             <Route path="Performance" element={<StudentPerformance />} exact />
-            <Route path="Notifications" element={<StudentNotifications />} exact />
+            <Route path="Notifications" element={<AdminNotifications />} exact />
             <Route path="Attendance" element={<StudentAttendance />} exact />
             <Route path="Profile" element={<AdminProfile />} exact />
           </Route>

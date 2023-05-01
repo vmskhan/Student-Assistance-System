@@ -39,11 +39,11 @@ const FacultyNavbar=()=>{
                 </Link>
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li><NavLink activeClassName="is-active" className="btn btn-outline-light border-0 fw-bold fst-italic" to="/faculty/Notes">Notes</NavLink></li>
-                      <li><NavLink activeClassName="is-active" className="btn btn-outline-light border-0 fw-bold fst-italic" to="/Feature/Mock">Mock interview</NavLink></li>
-                      <li><NavLink activeClassName="is-active" className="btn btn-outline-light border-0 fw-bold fst-italic" to="/Feature/Selflearn">Self-learning</NavLink></li>
-                      <li><NavLink activeClassName="is-active" className="btn btn-outline-light border-0 fw-bold fst-italic" to="/Feature/Notify">Notification</NavLink></li>
-                      <li><NavLink activeClassName="is-active" className="btn btn-outline-light border-0 fw-bold fst-italic" to="/Feature/Attendance">Attendance</NavLink></li>
-                      <li><NavLink activeClassName="is-active" className="btn btn-outline-light border-0 fw-bold fst-italic" to="/Feature/Performance">Performance</NavLink></li>
+                      <li><NavLink activeClassName="is-active" className="btn btn-outline-light border-0 fw-bold fst-italic" to="/faculty/Mock">Mock interview</NavLink></li>
+                      <li><NavLink activeClassName="is-active" className="btn btn-outline-light border-0 fw-bold fst-italic" to="/faculty/Selflearn">Self-learning</NavLink></li>
+                      <li><NavLink activeClassName="is-active" className="btn btn-outline-light border-0 fw-bold fst-italic" to="/faculty/Notifications">Notification</NavLink></li>
+                      <li><NavLink activeClassName="is-active" className="btn btn-outline-light border-0 fw-bold fst-italic" to="/faculty/Attendance">Attendance</NavLink></li>
+                      <li><NavLink activeClassName="is-active" className="btn btn-outline-light border-0 fw-bold fst-italic" to="/faculty/Performance">Performance</NavLink></li>
                 </ul>
                 <div className="d-flex align-items-center" >
                   

@@ -1,15 +1,18 @@
-import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getNotificationsForStudent } from "../../store/student-actions";
+import { getNotificationsForFaculty } from "../../store/faculty-actions";
+import { useEffect } from "react";
 
-const StudentNotifications=()=>{
-  const baseUrl=process.env.REACT_APP_IMAGE_UPLOADS_BASE_URL;
-  const notifications=useSelector(state=>state.student.notifications);
+const FacultyNotifications=()=>{
+    const baseUrl=process.env.REACT_APP_IMAGE_UPLOADS_BASE_URL;
+  const notifications=useSelector(state=>state.faculty.notifications);
   const dispatch=useDispatch();
   
   useEffect(()=>{
-    dispatch(getNotificationsForStudent());
+    dispatch(getNotificationsForFaculty());
   },[])  
+//   useEffect(()=>{
+// console.log(notifications);
+//   },[notifications])
 
   return(
         <div>
@@ -62,4 +65,5 @@ const StudentNotifications=()=>{
         </div>
     )
 }
-export default StudentNotifications;
+
+export default FacultyNotifications;

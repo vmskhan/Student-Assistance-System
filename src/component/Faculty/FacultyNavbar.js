@@ -7,7 +7,8 @@ const FacultyNavbar=()=>{
   const isLoggedIn=useSelector(state=>state.auth.isLoggedIn);  
   const dispatch=useDispatch();
   const navigate=useNavigate();
-  const userInfo=JSON.parse(localStorage.getItem('userInfo'));
+  const userInfo=useSelector(state=>state.auth.userInfo);
+  
   const logoutHandler=()=>{
     localStorage.removeItem('userInfo');
     dispatch(authActions.logout());
@@ -40,7 +41,7 @@ const FacultyNavbar=()=>{
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li><NavLink activeClassName="is-active" className="btn btn-outline-light border-0 fw-bold fst-italic" to="/faculty/Notes">Notes</NavLink></li>
                       <li><NavLink activeClassName="is-active" className="btn btn-outline-light border-0 fw-bold fst-italic" to="/faculty/Mock">Mock interview</NavLink></li>
-                      <li><NavLink activeClassName="is-active" className="btn btn-outline-light border-0 fw-bold fst-italic" to="/faculty/Selflearn">Self-learning</NavLink></li>
+                      {/* <li><NavLink activeClassName="is-active" className="btn btn-outline-light border-0 fw-bold fst-italic" to="/faculty/Selflearn">Self-learning</NavLink></li> */}
                       <li><NavLink activeClassName="is-active" className="btn btn-outline-light border-0 fw-bold fst-italic" to="/faculty/Notifications">Notification</NavLink></li>
                       <li><NavLink activeClassName="is-active" className="btn btn-outline-light border-0 fw-bold fst-italic" to="/faculty/Attendance">Attendance</NavLink></li>
                       <li><NavLink activeClassName="is-active" className="btn btn-outline-light border-0 fw-bold fst-italic" to="/faculty/Performance">Performance</NavLink></li>

@@ -1,11 +1,29 @@
+import { useState } from "react";
+import axios from "axios";
+
 const StudentPerformance=()=>{
-    return(
+  const [pythonMessage,setPythonMessage]=useState("");
+  const callPythonApi=()=>{
+    axios.get("http://localhost:5000/test")
+    .then((res)=>res.data)
+    .then((data)=>{
+      setPythonMessage(data);
+    })
+  }  
+  return(
         <div>
-             <section className="vh-100 d-flex justify-content-center align-items-center bg-danger">
+             <section className="d-flex justify-content-center align-items-center bg-danger">
             <div className="">
             <div className="h1 fw-bolder fs-1 text-center my-5">Performance</div>
             </div>
             
+          </section>
+          <section>
+            <div>Hello</div>
+            <br/>
+            <div>{pythonMessage}</div>
+            <br/>
+            <button onClick={callPythonApi}>Call python api</button>
           </section>
         </div>
     )

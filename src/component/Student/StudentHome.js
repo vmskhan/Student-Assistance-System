@@ -1,52 +1,42 @@
 import { useState } from "react";
 import Chart from "react-google-charts";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 
 const StudentHome = () => {
+  const user=useSelector((state)=>state.auth.userInfo);
     const [cardData,setCardData]=useState([
         {
         title:"Notes",
         desc:"Some quick example text to build on the card title and make up the bulk of the card's content.",
-        link:"/Feature/Notes",
-        image:"",
-    },
-    {
-        title:"Certificates",
-        desc:"Some quick example text to build on the card title and make up the bulk of the card's content.",
-        link:"/Feature/Certificates",
-        image:"",
+        link:"/student/Notes",
+        image:"/assets/images/notes.jpg",
     },
     {
         title:"Personal Details",
         desc:"Some quick example text to build on the card title and make up the bulk of the card's content.",
-        link:"/Feature/Profile",
+        link:"/student/Profile",
         image:"",
     },
     {
         title:"Academic performance",
         desc:"Some quick example text to build on the card title and make up the bulk of the card's content.",
-        link:"/Feature/Performance",
-        image:"",
-    },
-    {
-        title:"Self Learning",
-        desc:"Some quick example text to build on the card title and make up the bulk of the card's content.",
-        link:"/Feature/Selflearn",
+        link:"/student/Performance",
         image:"",
     },
 ]);
     return (
         <div className="home container">
-          <section className="vh-100 d-flex justify-content-center align-items-center bg-warning">
+          <section className="d-flex justify-content-center align-items-center fst-italic">
             <div className="">
-            <div className="h1 fw-bolder fs-1 text-center my-5">Hello, Welcome to Dashboard</div>
+            <div className="h1 fw-bolder fs-1 text-center my-5">Hello, Welcome Home ,{user.name} </div>
             </div>
             
           </section>
           <br/><br/><br/>
-            <section className="bg-danger">
-            <h1>performance graph</h1>
+            {/* <section className="">
+            <h1>Performance graph</h1>
             <Chart
                 chartType="ScatterChart"
                 data={[["Age", "Weight"], [4, 5.5], [8, 12]]}
@@ -54,8 +44,8 @@ const StudentHome = () => {
                 height="400px"
                 legendToggle
                 />
-            </section>
-            <section className="bg-success">
+            </section> */}
+            <section className="">
             <h1>cards</h1>
             <div className="row">
             { cardData.map((card,index)=>{
@@ -73,7 +63,7 @@ const StudentHome = () => {
         }
         </div>
             </section>
-            <section className="bg-info">
+            {/* <section className="">
             <h1>time table</h1>
             <table className="table">
   <thead>
@@ -104,7 +94,7 @@ const StudentHome = () => {
     </tr>
   </tbody>
 </table>
-            </section>
+            </section> */}
         </div>
     )
 }

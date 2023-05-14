@@ -8,7 +8,8 @@ const NotesModel = new mongoose.Schema({
     semester:Number,
     year:Number,
     fileLink:String,
-    subjectId:String,
+    subjectId:mongoose.SchemaTypes.ObjectId,
+    deptId:mongoose.SchemaTypes.ObjectId,
     creationDate:String,
 });
 

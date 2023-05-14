@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createNotification, deleteAdminNotifications, getAdminNotifications } from "../../store/admin-actions";
+import { createNotification, deleteAdminNotifications, getAdminNotifications } from "../../store/AdminActions/notification-actions";
 
 
 const AdminNotifications=()=>{
@@ -13,7 +13,7 @@ const AdminNotifications=()=>{
     const [document,setDocument]=useState({data:''});
     const [externalLink,setExternalLink]=useState("Nil");
     const [issuedFor,setIssuedFor]=useState("");
-    const userInfo=JSON.parse(localStorage.getItem("userInfo"));
+    const userInfo=useSelector(state=>state.auth.userInfo);
     
     useEffect(()=>{
         dispatch(getAdminNotifications());
@@ -63,9 +63,13 @@ const AdminNotifications=()=>{
                             <div class="accordion-item mb-3">
                                 <h2 class="accordion-header">
                                 <button class="accordion-button fs-5 fw-bold fst-italic" type="button" data-bs-toggle="collapse" data-bs-target={"#collapse"+index} aria-expanded="true" aria-controls={"collapse"+index}>
+                                    <div>
                                     {notification.title}
                                     <br/>
-                                    ~{notification.issuedDate}
+                                    Issued For:<span className="text-primary">{notification.issuedFor}</span>
+                                    <br/>
+                                    Issue Date:<span className="text-primary">~{notification.issuedDate}</span>
+                                    </div>
                                 </button>  
                                 
                                 </h2>

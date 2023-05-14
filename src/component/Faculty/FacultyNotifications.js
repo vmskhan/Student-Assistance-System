@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { getNotificationsForFaculty } from "../../store/faculty-actions";
+import { getNotificationsForFaculty } from "../../store/FacultyActions/faculty-actions";
 import { useEffect } from "react";
 
 const FacultyNotifications=()=>{

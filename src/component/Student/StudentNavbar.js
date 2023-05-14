@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import {authActions} from "./../../store/authSlice";
+
 const StudentNavbar=()=>{
   const baseUrl=process.env.REACT_APP_IMAGE_UPLOADS_BASE_URL;
   const isLoggedIn=useSelector(state=>state.auth.isLoggedIn);  
-    const dispatch=useDispatch();
-    const navigate=useNavigate();
-const userInfo=JSON.parse(localStorage.getItem('userInfo'));
+  const dispatch=useDispatch();
+  const navigate=useNavigate();
+  const userInfo=useSelector(state=>state.auth.userInfo);
+
     const logoutHandler=()=>{
       localStorage.removeItem('userInfo');
       dispatch(authActions.logout());
@@ -36,38 +38,16 @@ const userInfo=JSON.parse(localStorage.getItem('userInfo'));
                     loading="lazy"
                   />
                 </Link>
-                {/* <ul className="navbar-nav me-auto mb-2 mb-lg-0"> */}
-                  {/* <li className="nav-item">
-  
-                    <NavLink activeClassName="is-active" className="active fw-bold btn btn-light btn-outline-info" aria-current="page" to="/student/home">Home</NavLink>
-                  </li> */}
-                  {/* <li className="nav-item dropdown"> */}
-                    {/* <Link className="btn btn-light btn-outline-info dropdown-toggle fw-bold" to="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Feature
-                    </Link> */}
-                    {/* <ul className="dropdown-menu" aria-labelledby="navbarDropdown"> */}
-                    
+              
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0" aria-labelledby="navbarDropdown">
                       <li><NavLink activeClassName="is-active" className="btn btn-outline-light border-0 fw-bold fst-italic" to="/student/Notes">Notes</NavLink></li>
                       <li><NavLink activeClassName="is-active" className="btn btn-outline-light border-0 fw-bold fst-italic" to="/student/Mock">Mock interview</NavLink></li>
-                      <li><NavLink activeClassName="is-active" className="btn btn-outline-light border-0 fw-bold fst-italic" to="/student/Selflearn">Self-learning</NavLink></li>
+                      {/* <li><NavLink activeClassName="is-active" className="btn btn-outline-light border-0 fw-bold fst-italic" to="/student/Selflearn">Self-learning</NavLink></li> */}
                       <li><NavLink activeClassName="is-active" className="btn btn-outline-light border-0 fw-bold fst-italic" to="/student/Notifications">Notification</NavLink></li>
                       <li><NavLink activeClassName="is-active" className="btn btn-outline-light border-0 fw-bold fst-italic" to="/student/Attendance">Attendance</NavLink></li>
                       <li><NavLink activeClassName="is-active" className="btn btn-outline-light border-0 fw-bold fst-italic" to="/student/Performance">Performance</NavLink></li>
-                      {/* <li><hr className="dropdown-divider" /></li> */}
-  
                     </ul>
-                  {/* </li> */}
   
-                  {/* <li className="nav-item">
-                    <NavLink activeClassName="is-active" className="btn btn-light btn-outline-info fw-bold" to="#">About</NavLink>
-                  </li>
-                  <li className="nav-item">
-                    <NavLink activeClassName="is-active" className="btn btn-light btn-outline-info fw-bold" to="#">Contact</NavLink>
-                  </li> */}
-  
-  
-                {/* </ul> */}
                 <div className="d-flex align-items-center" >
                   
                   <div className="dropdown">

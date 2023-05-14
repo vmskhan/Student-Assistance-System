@@ -5,6 +5,7 @@ import Loading from './Loading';
 import proxyAxios from '../../axiosMiddleware';
 import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
+import Footer from './Footer';
 
 const FacultyRegister=() => {
     const [name,setName]=useState("");
@@ -41,7 +42,7 @@ const FacultyRegister=() => {
                 name:name,
                 email:email,
                 password:password,
-                 id:facultyId,
+                 userId:facultyId,
                 pic:"Nil",
                 role:"faculty",
               }
@@ -74,9 +75,9 @@ const imageHandler=(e)=>{
     return(
         <>
       <Navbar/>  
-    <div className="auth-bg-left-img d-flex flex-column vh-100">
+    <div className="auth-bg-left-img">
         <div className="d-flex align-items-center justify-content-around">
-            <div className="shadow rounded bg-white px-5 py-3 w-50 mt-3">      
+            <div className="shadow rounded bg-white px-5 py-3 w-50 my-3">      
                 <div className="h3 mt-4 text-success text-center"> <img
                   src="/assets/images/SAS2.png"
                   height="70"
@@ -129,7 +130,7 @@ const imageHandler=(e)=>{
         </div>
     
     </div>
-    
+    <Footer/>
     </>
     );
 };

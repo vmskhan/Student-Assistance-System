@@ -1,27 +1,38 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom';
-import { deleteNotes, getNotes, sendNewNotes } from '../../store/faculty-actions';
+import { deleteNotes, getNotes, sendNewNotes } from '../../store/FacultyActions/notes-actions';
 import { useDispatch, useSelector } from 'react-redux';
-
+import { getFacultyProfile, getSubjectsForFaculty } from '../../store/FacultyActions/faculty-actions';
+import _ from 'lodash';
 
 
 export const FacultyNotes = () => {
     const baseUrl=process.env.REACT_APP_IMAGE_UPLOADS_BASE_URL;
     const sems=[1,2,3,4,5,6,7,8];
+    const facultyProfile=useSelector(state=>state.faculty.profile);
     const [title,setTitle]=useState("");
     const [description,setDescription]=useState("");
-    const [subjectId,setSubjectId]=useState("0");
+    const [subjectId,setSubjectId]=useState("");
     const [fileLink,setFileLink]=useState({data:''});
     const [semester,setSemester]=useState(1);
     const [year,setYear]=useState(1);
     const [author,setAuthor]=useState("");
     const notes=useSelector(state=>state.faculty.notes);
     const dispatch=useDispatch();
-    const userInfo=JSON.parse(localStorage.getItem('userInfo'));
-    
+    const userInfo=useSelector(state=>state.auth.userInfo);
+    const subjects=useSelector(state=>state.faculty.subjects);
 useEffect(()=>{
-    dispatch(getNotes());
-},[])
+    dispatch(getFacultyProfile(userInfo._id));
+},[]);
+useEffect(()=>{
+    console.log(notes);
+},[notes]);
+useEffect(()=>{
+    if(!(_.isEmpty(facultyProfile)))
+    {
+        dispatch(getSubjectsForFaculty(facultyProfile.deptId));
+        dispatch(getNotes(facultyProfile.deptId));
+    }
+},[facultyProfile])
 
     const handleSemesterChange=(value)=>{
         setSemester(value);
@@ -37,7 +48,10 @@ useEffect(()=>{
             year,
             fileLink,
             subjectId,
+            deptId:'',
         }
+        if(!(_.isEmpty(facultyProfile)))
+         data.deptId=facultyProfile.deptId;
     console.log(data);
     dispatch(sendNewNotes(data));
     }
@@ -75,17 +89,18 @@ const deleteHandler=(id)=>{
                         <div className='text-center fs-5 text-muted'>No notes to display</div>}
                         {
                            notes.map((note)=>{
-                                return(                        
+                            
+                            return(                        
                                 <div className="col-4 mx-auto">
                                 <div className="card m-3">
                                     <div className='card-header d-flex justify-content-between'>
                                         <h5 className="card-title">{note.title}</h5>
                                         {note.createdBy===userInfo.name &&
-                                        <button className="btn btn-danger"onClick={()=>deleteHandler(note._id)}><i class="bi bi-x-octagon"></i> Delete</button>
+                                        <button className="btn btn-danger"onClick={()=>deleteHandler(note._id)}><i className="bi bi-x-octagon"></i> Delete</button>
                                         }
                                     </div>
                                 <div className="card-body">
-                                    
+                                        <p><span className='fw-bold'>Subject:</span> {note.subjectName}</p>
                                         <div className='d-flex justify-content-between'>
                                             <p className="card-text">
                                                 <span className='fw-bold'>Author:</span> {note.author}
@@ -104,7 +119,7 @@ const deleteHandler=(id)=>{
                                         {/* Creation Date:{note.creationDate} */}
                                         
                                         <div className='text-end'>
-                                             <a download href={baseUrl+note.fileLink} className="btn btn-primary"><i class="bi bi-box-arrow-down"></i> Download</a>
+                                             <a download href={baseUrl+note.fileLink} className="btn btn-primary"><i className="bi bi-box-arrow-down"></i> Download</a>
                                         </div>
                                 </div>
                             </div>
@@ -139,17 +154,17 @@ const deleteHandler=(id)=>{
             <input type='text' className="form-control" name='author' placeholder="Enter Author Name" value={author} onChange={(e)=>setAuthor(e.target.value)} />
         </div>
         
-        {/* <div className='input-group mb-3'>
+        <div className='input-group mb-3'>
             <label className=' input-group-text'>Subject</label>
             <select type='text' className="form-select" name='subject' placeholder="select subject" value={subjectId} onChange={(e)=>setSubjectId(e.target.value)} >
             <option selected>Select Subject</option>
                 { 
                 subjects.map(sub=>{
-                return <option value={sub.code}>{sub.name}</option>
+                return <option value={sub._id}>{sub.name}-{sub.code}</option>
                 })
                 }
             </select>
-        </div> */}
+        </div>
 
         <div className='input-group mb-3'>
             <label className=' input-group-text'>Semester</label>

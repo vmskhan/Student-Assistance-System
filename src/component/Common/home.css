@@ -2,5 +2,6 @@
     /* The image used */
     background-image:url("./../../assets/images/graduation.jpg");
     background-size:contain;
+    background-position-x: center;
     background-repeat: no-repeat;
   }

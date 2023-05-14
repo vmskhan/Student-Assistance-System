@@ -17,7 +17,7 @@ const userSchema = mongoose.Schema(
             type: String,
             required: true,
         },
-        id:{
+        userId:{
             type: String,
             required: true,
         },
@@ -32,8 +32,7 @@ const userSchema = mongoose.Schema(
         pic:{
             type: String,
             required: true,
-            default:
-                "https://www.google.com/imgres?imgurl=https%3A%2F%2Fwww.pngitem.com%2Fpimgs%2Fm%2F522-5220445_anonymous-profile-grey-person-sticker-glitch-empty-profile.png&imgrefurl=https%3A%2F%2Fwww.pngitem.com%2Fmiddle%2FhmhxiJi_anonymous-profile-grey-person-sticker-glitch-empty-profile%2F&tbnid=GHbdym26eAzRCM&vet=12ahUKEwjd8N3N1qf5AhWyx6ACHdkCCOQQMygCegUIARDJAQ..i&docid=DW6FqC3PlmkyYM&w=860&h=706&q=empty%20profile%20pic%20icon&ved=2ahUKEwjd8N3N1qf5AhWyx6ACHdkCCOQQMygCegUIARDJAQ",
+            default:"Nil",
         },
     },
     {

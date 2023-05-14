@@ -1,18 +1,19 @@
 const mongoose=require('mongoose');
 
 
-const registrationSchema = new mongoose.Schema({
+const StudentSchema = new mongoose.Schema({
   studentId:String,
-  // eventName:String,
   fathersName:String,
   mothersName:String,
   phoneNumber:String,
-  year:Number,
-  branch:String,
+  courseId:mongoose.SchemaTypes.ObjectId,
   batch:String,
+  sectionId:mongoose.SchemaTypes.ObjectId,
+  marks:Object,
+  attendance:Object,
 });
 
-const Registration = mongoose.model("Registration", registrationSchema);
+const Student = mongoose.model("Student", StudentSchema);
 
 
-module.exports =   Registration;
+module.exports =  Student;

@@ -21,9 +21,12 @@ const Login=() => {
     const isLoggedIn=useSelector(state=>state.auth.isLoggedIn);
 
     useEffect(() => {
+        
         let userInfo=JSON.parse(localStorage.getItem("userInfo"));
         if(userInfo)
+        {
             dispatch(authActions.login());
+        }
         if(isLoggedIn){
             if(userInfo)
             {
@@ -56,7 +59,7 @@ const Login=() => {
                 console.log(data);
                 localStorage.setItem("userInfo",JSON.stringify(data));
                 dispatch(authActions.login());
-
+                dispatch(authActions.setUserInfo(data));
                 setLoading(false);
                 setError("");
                 navigate('/'+data.role+'/home');
@@ -123,17 +126,19 @@ const Login=() => {
         <div className="col-6 text-center auth-bg-right-img">
             <div className="row justify-content-center">
                 <div className="col-12 d-flex flex-wrap vh-100 text-center">
-                    <h4 className="text-dark  flex-fill display-5"><img
+                    <h4 className="text-dark  flex-fill display-5">
+                        {/* <img
                   src="/assets/images/SAS2.png"
                   height="70"
                   alt="MDB Logo"
                   loading="lazy"
-                /> Student Assistance System</h4>
+                /> Student Assistance System */}
+                </h4>
                     <p className="text-dark fw-bolder flex-fill align-self-end mx-2">
-                        Student Assistance System is an Online Platform designed to have 
+                        {/* Student Assistance System is an Online Platform designed to have 
                         a single point of accesss to all academic information for the faculty and the students. 
-                        It also provides many features to aid academic duties and also help analyze student performance.
-                        <br/><span className="text-secondary">&copy; SAS Pvt. Ltd.</span>
+                        It also provides many features to aid academic duties and also help analyze student performance. */}
+                        {/* <br/><span className="text-secondary">&copy; SAS Pvt. Ltd.</span> */}
                     </p>
                 </div> 
             </div>

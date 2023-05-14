@@ -7,7 +7,8 @@ const AdminNavbar=()=>{
     const isLoggedIn=useSelector(state=>state.auth.isLoggedIn);  
     const dispatch=useDispatch();
     const navigate=useNavigate();
-    const userInfo=JSON.parse(localStorage.getItem('userInfo'));
+    const userInfo=useSelector(state=>state.auth.userInfo);
+    
     const logoutHandler=()=>{
       localStorage.removeItem('userInfo');
       dispatch(authActions.logout());
@@ -39,15 +40,17 @@ const AdminNavbar=()=>{
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                   <li><NavLink activeClassName="is-active" className="btn btn-outline-light border-0 fw-bold fst-italic" to="/admin/StudentProfiles">Student Profiles</NavLink></li>
                   <li><NavLink activeClassName="is-active" className="btn btn-outline-light border-0 fw-bold fst-italic" to="/admin/FacultyProfiles">Faculty Profiles</NavLink></li>
-                  <li><NavLink activeClassName="is-active" className="btn btn-outline-light border-0 fw-bold fst-italic" to="/admin/Attendance">Attendance</NavLink></li>
-                  <li><NavLink activeClassName="is-active" className="btn btn-outline-light border-0 fw-bold fst-italic" to="/admin/Performance">Performance</NavLink></li>
+                  {/* <li><NavLink activeClassName="is-active" className="btn btn-outline-light border-0 fw-bold fst-italic" to="/admin/Attendance">Attendance</NavLink></li> */}
+                  {/* <li><NavLink activeClassName="is-active" className="btn btn-outline-light border-0 fw-bold fst-italic" to="/admin/Performance">Performance</NavLink></li> */}
+                  <li><NavLink activeClassName="is-active" className="btn btn-outline-light border-0 fw-bold fst-italic" to="/admin/InstitutionInfo">Institution Info</NavLink></li>
                   <li><NavLink activeClassName="is-active" className="btn btn-outline-light border-0 fw-bold fst-italic" to="/admin/Controls">Controls</NavLink></li>
                   <li><NavLink activeClassName="is-active" className="btn btn-outline-light border-0 fw-bold fst-italic" to="/admin/Notifications">Notifications</NavLink></li>
+                  <li><NavLink activeClassName="is-active" className="btn btn-outline-light border-0 fw-bold fst-italic" to="/admin/Timetables">Time Tables</NavLink></li>
                 </ul>
                 <div className="d-flex align-items-center" >
                   
                   <div className="dropdown">
-                  <button className="btn btn-light btn-outline-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <button className="btn rounded-circle dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                      {userInfo.pic==='Nil'?( <img
                         src="/assets/images/logo1.png"
                         className="rounded-circle"
@@ -55,7 +58,7 @@ const AdminNavbar=()=>{
                         alt="Black and White Portrait of a Man"
                         loading="lazy"
                       />):(
-                        <img src={baseUrl+userInfo.pic} height="65vh" alt="Profile pic"/>
+                        <img src={baseUrl+userInfo.pic} height="65vh" className="rounded-circle" alt="Profile pic"/>
                       )}
                     </button>
                     <ul

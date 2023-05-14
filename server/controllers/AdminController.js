@@ -2,10 +2,11 @@ const fs=require('fs');
 const User=require('./../models/userModel');
 const asyncHandler=require('express-async-handler');
 const AdminControls = require('../models/AdminControlsModel');
+const Faculty=require('../models/FacultyModel');
+const Student = require('../models/StudentModel');
 
 
-
-const getStudentProfiles=asyncHandler(async(req,res)=>{
+const getStudentAccounts=asyncHandler(async(req,res)=>{
     
      User.find({role:'student'},function(err,users){
         
@@ -24,7 +25,7 @@ const getStudentProfiles=asyncHandler(async(req,res)=>{
     
 })
 
-const getFacultyProfiles=asyncHandler(async(req,res)=>{
+const getFacultyAccounts=asyncHandler(async(req,res)=>{
     
   User.find({role:'faculty'},function(err,users){
      
@@ -41,6 +42,25 @@ const getFacultyProfiles=asyncHandler(async(req,res)=>{
      }
  });
  
+})
+const getFacultyProfiles=asyncHandler(async(req,res)=>{
+  Faculty.find().then((data,err)=>{
+    if(err)
+    {
+      console.log(err);
+      res.json({
+        'message':err,
+      });
+    }
+    else
+    {
+      console.log(data);
+      res.json({
+        'data':data,
+      });
+    }
+  })  
+  
 })
 
 const changeProfileStatus=asyncHandler(async(req,res)=>{
@@ -67,12 +87,40 @@ const deleteProfile=asyncHandler(async(req,res)=>{
      
      if(err)
      {
-       res.json({
+       res.status(500).json({
          message:err,
        });
      }
      else{
-         res.json({
+        if(users.role==='student')
+          Student.findOneAndDelete({'studentId':req.params.accId}).then((data,err)=>{
+            if(err)
+            {
+              console.log('delete unsuccessful') 
+            console.log(err);
+            }
+            else
+            {
+              console.log('successfully deleted') 
+              console.log(data);  
+            }
+          });
+        else if(users.role==='faculty')
+          
+        Faculty.findOneAndDelete({'facultyId':req.params.accId})
+          .then((data,err)=>{
+            if(err)
+            {
+              console.log('delete unsuccessful fac prof') 
+            console.log(err);
+            }
+            else
+            {
+              console.log('successfully deleted fac prof') 
+              console.log(data);  
+            }
+          });
+         res.status(200).json({
              'data':"successfully deleted"
          });
      }
@@ -157,7 +205,8 @@ AdminControls.create({
 
 
 module.exports={
- getStudentProfiles,
+ getStudentAccounts,
+ getFacultyAccounts,
  getFacultyProfiles,
  changeProfileStatus,
  deleteProfile,

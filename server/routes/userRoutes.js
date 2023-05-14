@@ -1,27 +1,17 @@
-const path=require('path');
 const express=require("express");
-const { addEventRegistration} = require("../controllers/RegistrationController");
 const router=express.Router();
-const { authUser, registerUser } = require('../controllers/userController');
+const { authUser, registerUser, getStudentDetails, updateStudentDetails } = require('../controllers/userController');
 const { getNotes } = require('../controllers/NotesController');
 const { getUserNotifications } = require('../controllers/NotificationController');
-
-
-// //registration routes
-
-// router.post("/Registration",upload.single("PaymentScreenshot"),addEventRegistration);
-
-// //event routes
-
-// router.route('/Event').get();
-// router.route('/Event/:state').get()
-
-// //project routes
-// router.route('/Project').get();
+const { getAllCourses } = require("../controllers/CourseController");
+const { getAllSections } = require("../controllers/SectionController");
 
 router.route('/login').post(authUser);
 router.route('/register').post(registerUser);
 router.route('/notes').get(getNotes);
 router.route('/notifications').get(getUserNotifications);
-
+router.route('/profile/:id').get(getStudentDetails);
+router.route('/profile').put(updateStudentDetails);
+router.route('/courses').get(getAllCourses);
+router.route('/sections').get(getAllSections);
 module.exports = router;

@@ -15,8 +15,8 @@ const FacultyPerformance=()=>{
     const dispatch=useDispatch();
 
     const [sectionId,setSectionId]=useState("");
-
-
+    const [subjectId,setSubjectId]=useState("");
+    const [subjectName,setSubjectName]=useState("");
     useEffect(()=>{
         dispatch(getFacultyProfile(userInfo._id));
         dispatch(getTimeTableForParticularFaculty(userInfo._id));
@@ -29,16 +29,22 @@ const FacultyPerformance=()=>{
             dispatch(getCoursesForFaculty(facultyProfile.deptId));
     },[facultyProfile]);
 
-    const sectionChangeHandler=(value)=>{
+    const subjectChangeHandler=(value)=>{
         // console.log(value)
-        setSectionId(value);
+        setSubjectId(value);
+        let currentSubject=timeTable.subjectsAssigned.filter((sub)=>sub.subjectId==value);
+        setSectionId(currentSubject.sectionId);
+        setSubjectName(currentSubject.subjectName);
         if(value!=="nil")
-            dispatch(getStudentProfilesForFaculty(value));
+            dispatch(getStudentProfilesForFaculty(currentSubject.sectionId));
     }
     useEffect(()=>{
         console.log(studentProfiles);
         console.log(studentAccounts);
     },[studentProfiles,studentAccounts]);
+    // useEffect(()=>{
+    //     console.log(timeTable);
+    // },[timeTable]);
 
     return(<>
     { (!(_.isEmpty(timeTable))) &&
@@ -50,12 +56,12 @@ const FacultyPerformance=()=>{
             </section>
         <div className="my-3">
             <div className="mx-auto col-6">
-                <select type="text" className="form-select" value={sectionId} onChange={(e)=>sectionChangeHandler(e.target.value)}>
+                <select type="text" className="form-select" value={subjectId} onChange={(e)=>subjectChangeHandler(e.target.value)}>
                     <option value="nil">Select Subject</option>
                     {timeTable.subjectsAssigned.map((sub)=>{
                         
                         return(
-                            <option value={sub.sectionId}>{sub.subjectName}-{sub.sectionName}</option>
+                            <option value={sub.subjectId}>{sub.subjectName}-{sub.sectionName}</option>
                         );
                     })
 
@@ -101,9 +107,10 @@ const FacultyPerformance=()=>{
                             </td>
                             <td>{myStud.name}</td>
                             {/* <td>{sub.subjectName}-{sub.sectionName}</td> */}
-                            <td>Artificial Intelligence</td>
-                            <td>Excellent</td>
-                            <td>97.02%</td>
+                            <td>{subjectName}</td>
+                            
+                            <td>Good</td>
+                            <td>{myStud.marks[subjectName]?.percentage}</td>
                             <td><button className="btn btn-success">View</button></td>
                         </tr>
                     )

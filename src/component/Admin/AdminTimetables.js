@@ -273,7 +273,7 @@ useEffect(()=>{
                                                 return(
                                                     <td>
                                                         <button className="btn" onClick={()=>addInitializer(periodData)} data-bs-toggle="modal" data-bs-target="#addPeriodModal">
-                                                            <span className="bg-dark padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13">{periodExists.subjectName}</span>
+                                                            <span className="btn bg-primary padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13">{periodExists.subjectName}</span>
                                                             <div className="font-size13 text-light-gray">{periodExists.teacherName}</div>
                                                             {/* {console.log(periodData.facultyId)} */}
                                                             {(!facultyProfiles.some((f)=>f.facultyId==periodData.facultyId)) && 

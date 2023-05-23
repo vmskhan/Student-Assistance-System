@@ -5,3 +5,10 @@
     background-position-x: center;
     background-repeat: no-repeat;
   }
+
+.registerImg{
+  background-image:url("./../../assets/images/stars.jpg");
+  background-size:cover;
+  background-position-x: center;
+  background-repeat: no-repeat;
+}

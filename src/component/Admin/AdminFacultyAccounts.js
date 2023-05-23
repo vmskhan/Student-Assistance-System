@@ -54,7 +54,7 @@ const AdminFacultyAccounts=()=>{
                 </thead>
                 <tbody className="table-group-divider">
                     {facultyData && facultyData.map((student,index)=>{
-                        if(searchTerm==='' || student.id.includes(searchTerm))
+                        if(searchTerm==='' || student.userId.includes(searchTerm))
                         return(
                     <tr className="text-center">
                         <td scope="row">{index+1}</td>
@@ -72,7 +72,7 @@ const AdminFacultyAccounts=()=>{
                         )
                         }
                         </td>
-                        <td>{student.id}</td>
+                        <td>{student.userId}</td>
                         <td>{student.name}</td>
                         <td>{student.email}</td>
                         <td>{student.status}</td>

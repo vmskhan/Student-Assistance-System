@@ -77,7 +77,7 @@ const deleteNotification =asyncHandler(async(req,res) => {
 
 const getUserNotifications =asyncHandler(async(req,res) => {
     
-    const NotifList=await Notification.find({issuedFor:'Students'});
+    const NotifList=await Notification.find({issuedFor:{$in:['Students','All']}});
         console.log('Notifications found');
         console.log(NotifList);
     if(NotifList){
@@ -95,7 +95,7 @@ const getUserNotifications =asyncHandler(async(req,res) => {
 
 const getFacultyNotifications =asyncHandler(async(req,res) => {
     
-    const NotifList=await Notification.find({issuedFor:'Faculty'});
+    const NotifList=await Notification.find({issuedFor:{$in:['Faculty','All']}});
         console.log('Notifications found');
         console.log(NotifList);
     if(NotifList){

@@ -28,7 +28,7 @@ const registerUser =asyncHandler(async(req,res) => {
     
     newUserData.status="active";
     // console.log(req.files);
-    if(req.files && req.files[0].filename)
+    if(req.files.length>0 && req.files[0].filename)
         newUserData.pic=req.files[0].filename;
 
     const user=await User.create(newUserData);

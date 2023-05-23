@@ -29,13 +29,14 @@ const AdminNavbar=()=>{
   
   
               <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                <Link className="navbar-brand mt-1 mt-lg-0" to="/admin/home">
-                  <img
+                <Link className="navbar-brand mt-1 mt-lg-0 text-center" to="/admin/home">
+                  <div><img
                     src="/assets/images/SAS2.png"
                     height="70"
                     alt="MDB Logo"
                     loading="lazy"
-                  />
+                  /></div>
+                  <div><span className="text-light fw-bolder fst-italic">ADMIN</span></div>
                 </Link>
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                   <li><NavLink activeClassName="is-active" className="btn btn-outline-light border-0 fw-bold fst-italic" to="/admin/StudentProfiles">Student Profiles</NavLink></li>

@@ -76,7 +76,7 @@ const StudentRegister=() => {
     return(
         <>
         <Navbar/>
-    <div className="auth-bg-left-img d-flex flex-column">
+    <div className="registerImg d-flex flex-column">
         <div className="d-flex align-items-center justify-content-around">
             <div className="shadow rounded bg-white px-5 py-3 w-50 my-3">      
                 <div className="h3 mt-4 text-success text-center"> <img

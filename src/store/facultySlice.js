@@ -13,6 +13,7 @@ const facultySlice=createSlice({
         subjects:[],
         studentProfiles:[],
         studentAccounts:[],
+        selectedSection:{},
     },
     reducers:{
         setNotes(state,action)
@@ -46,6 +47,9 @@ const facultySlice=createSlice({
         },
         setStudentAccounts(state,action){
             state.studentAccounts=action.payload;
+        },
+        setSelectedSection(state,action){
+            state.selectedSection=action.payload;
         }
     }
 });

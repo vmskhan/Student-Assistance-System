@@ -71,7 +71,68 @@ const updateParticularSection =asyncHandler( async(req,res) =>{
   })
 });
 
+const updateStudentMarksInSection =asyncHandler( async(req,res) =>{
+  const {studentId,userId,subjectName,
+    subjectId,percentage,firstInternal,
+    secondInternal,assignments,sectionId}=req.body;
+  let data={
+    studentId,userId,
+    subjects:[
+      {
+        subjectName,
+      subjectId,percentage,firstInternal,
+      secondInternal,assignments
+    }
+    ]
+  }
+  console.log(sectionId)
+  let mySection=await Section.findById(sectionId).lean();
+  console.log(mySection)
+  
+  if(mySection.marks)
+  {
+    let myIndex;  
+    myIndex=mySection.marks.findIndex((stud)=>stud.studentId===studentId);
+    if(myIndex===-1)
+      mySection.marks.push(data);
+    else
+    {
+      let mySubIndex=mySection.marks[myIndex]?.subjects?.findIndex((sub)=>sub.subjectId===subjectId);
+      if(mySubIndex)
+      {
+        if(mySubIndex!==-1)
+        {
+          mySection.marks[myIndex].subjects[mySubIndex]=data.subjects[0];
+        }
+        else
+        {
+          mySection.marks[myIndex].subjects.push(data.subjects[0]);
+        }
+      }
+      else
+      {
+        mySection.marks[myIndex].subjects=[];
+        mySection.marks[myIndex].subjects.push(data.subjects[0]);
+      }
+    }
+  }
+  else
+  {
+    mySection.marks=[];
+    mySection.marks.push(data);
+  }
 
+
+  await Section.updateOne({_id:sectionId},mySection)
+      .then(result => {
+    const { matchedCount, modifiedCount } = result;
+
+  })
+  .catch(err => console.error(`Failed to add review: ${err}`));
+ res.json({
+  "message":"sucessfully updated"
+})
+});
 
 
 module.exports = {
@@ -80,4 +141,5 @@ module.exports = {
   deleteParticularSection,
   updateParticularSection,
   getAllSections,
+  updateStudentMarksInSection
 }

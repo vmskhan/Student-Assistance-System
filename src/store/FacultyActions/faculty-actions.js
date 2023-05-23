@@ -123,25 +123,58 @@ export const getSubjectsForFaculty=(deptId)=>{
 export const getStudentProfilesForFaculty=(sectionId)=>{
     return async(dispatch)=>{
             const reqHandler=async()=>{
+                // console.log(sectionId)
             proxyAxios.get("/api/faculty/studentProfiles/"+sectionId)
             .then((res)=>res.data)
             .then((data)=>{
                 console.log(data)
                 dispatch(facultyActions.setStudentProfiles(data.studentProfiles));
+            }).catch((err)=>{
+                console.log(err)
             })
         }
         await reqHandler();
     }
 }
 
-export const getStudentAccountsForFaculty=()=>{
+export const getStudentAccountsForFaculty=(sectionId)=>{
     return async(dispatch)=>{
             const reqHandler=async()=>{
-            proxyAxios.get("/api/faculty/studentAccounts")
+            proxyAxios.get("/api/faculty/studentAccounts/"+sectionId)
             .then((res)=>res.data)
             .then((data)=>{
                 console.log(data)
-                dispatch(facultyActions.setStudentAccounts(data.data));
+                dispatch(facultyActions.setStudentAccounts(data.studentAccounts));
+            })
+        }
+        await reqHandler();
+    }
+}
+
+
+export const getSelectedSection=(sectionId)=>{
+    return async(dispatch)=>{
+            const reqHandler=async()=>{
+            proxyAxios.get("/api/faculty/sections/"+sectionId)
+            .then((res)=>res.data)
+            .then((data)=>{
+                console.log(data)
+                dispatch(facultyActions.setSelectedSection(data.Section));
+
+            })
+        }
+        await reqHandler();
+    }
+}
+
+export const updateParticularStudentMarks=(marksData)=>{
+    return async(dispatch)=>{
+            const reqHandler=async()=>{
+            proxyAxios.post("/api/faculty/sections/marks",marksData)
+            .then((res)=>res.data)
+            .then((data)=>{
+                console.log(data)
+                dispatch(getSelectedSection(marksData.sectionId));
             })
         }
         await reqHandler();

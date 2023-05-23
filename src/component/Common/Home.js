@@ -20,38 +20,6 @@ const Home = () => {
   //       navigate('/'+user.role+'/home');
   //     },[isLoggedIn]);
 
-  const [cardData, setCardData] = useState([
-    {
-      title: "Notes",
-      desc: "Some quick example text to build on the card title and make up the bulk of the card's content.",
-      link: "/Feature/Notes",
-      image: "",
-    },
-    {
-      title: "Certificates",
-      desc: "Some quick example text to build on the card title and make up the bulk of the card's content.",
-      link: "/Feature/Certificates",
-      image: "",
-    },
-    {
-      title: "Personal Details",
-      desc: "Some quick example text to build on the card title and make up the bulk of the card's content.",
-      link: "/Feature/Profile",
-      image: "",
-    },
-    {
-      title: "Academic performance",
-      desc: "Some quick example text to build on the card title and make up the bulk of the card's content.",
-      link: "/Feature/Performance",
-      image: "",
-    },
-    {
-      title: "Self Learning",
-      desc: "Some quick example text to build on the card title and make up the bulk of the card's content.",
-      link: "/Feature/Selflearn",
-      image: "",
-    },
-  ]);
   return (
     <div className="home">
       <Navbar />

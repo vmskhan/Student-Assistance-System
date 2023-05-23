@@ -9,8 +9,6 @@ const StudentSchema = new mongoose.Schema({
   courseId:mongoose.SchemaTypes.ObjectId,
   batch:String,
   sectionId:mongoose.SchemaTypes.ObjectId,
-  marks:Object,
-  attendance:Object,
 });
 
 const Student = mongoose.model("Student", StudentSchema);

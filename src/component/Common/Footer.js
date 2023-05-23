@@ -13,10 +13,10 @@ const Footer = (props) => {
             behavior: "instant"
         });
     }
-    const bgStyle = { backgroundColor: "#f5f5f5" };
+    const bgStyle = { backgroundColor: "#c0c7d0" };
 
     return (
-        <footer className="text-center  border-2 border-top" style={{ backgroundColor: "#99ffcc" }}>
+        <footer className="text-center  border-2 border-top" style={{ backgroundColor: "#c0c7d0" }}>
             <div className="row text-center">
                 <div className="col-12">
                     <img

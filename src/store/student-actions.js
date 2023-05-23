@@ -7,6 +7,7 @@ export const getNotesForStudent=()=>{
             proxyAxios.get("/api/users/notes")
             .then((res)=>res.data)
             .then((data)=>{
+                console.log(data);
                 dispatch(studentActions.setNotes(data.notes));
             })
         }

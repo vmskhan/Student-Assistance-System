@@ -55,6 +55,7 @@ const FacultyRegister=() => {
                 console.log(data);
                 localStorage.setItem("userInfo",JSON.stringify(data));
                 setLoading(false);
+                alert('Registered successfully.Please Login to continue...')
         })
         .catch((error)=>{
             setLoading(false);

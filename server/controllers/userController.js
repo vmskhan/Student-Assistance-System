@@ -257,6 +257,35 @@ const getAllStudentDetailsWithSectionId= asyncHandler(async(req,res) => {
     }
 })
 
+const getAllStudentAccountsWithSectionId= asyncHandler(async(req,res) => {
+    const studentProfiles=await Student.find({'sectionId':req.params.sectionId}).lean();
+    // console.log(req.params.sectionId);
+    // console.log(studentProfiles);
+    
+    let studentAccounts=[];
+    const StudAccs=await User.find({'role':'student'}).lean();
+    // console.log(StudAccs);
+    studentProfiles?.map((s)=>{
+        let k=StudAccs?.filter((acc)=>acc._id==s.studentId)?.[0];
+        // console.log(k);
+        if(k)
+            studentAccounts.push(k);
+    });
+
+    if(studentAccounts){
+        res.status(200).json({
+            'studentAccounts':studentAccounts,
+        });
+    }
+    else
+    {
+        res.status(400);
+        throw new Error("NO Student profile found");
+    }
+})
+
+
+
 module.exports={ 
     registerUser , 
     authUser, 
@@ -265,5 +294,6 @@ module.exports={
     updateFacultyDetails,
     getStudentDetails,
     updateStudentDetails,
-    getAllStudentDetailsWithSectionId
+    getAllStudentDetailsWithSectionId,
+    getAllStudentAccountsWithSectionId
 };

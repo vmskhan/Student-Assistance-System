@@ -69,12 +69,14 @@ const Home = () => {
       <br />
       <section id="aboutUs" className="vh-100 px-5 border-2 border-top">
         <br />
-        <h2 className="text-center fst-italic fw-bold">About Us</h2>
+
         <div className="row justify-content-evenly">
           <div className="col-6 ">
             <img src={aboutusjpg} className="img-fluid" />
           </div>
           <div className="col-6 align-self-center">
+            <h2 className="text-center fst-italic fw-bold me-5">About Us</h2>
+            <br />
             <p>
               Our student assistant system is designed to streamline the academic journey
               for students, providing them with access to a wide range of tools and
@@ -96,11 +98,12 @@ const Home = () => {
       <br />
 
       <section id="students" className="vh-100 px-5 border-2 border-top" ref={studentsRef}>
-        <h2 className="text-center fst-italic fw-bolder">Students</h2>
+
         <div className="row justify-content-evenly">
 
           <div className="col-6 align-self-center">
-
+            <h2 className="text-center fst-italic fw-bolder">Student</h2>
+            <br />
             <p>Our student assistant system is designed with the needs of students in mind.
               We understand that students today face a variety of challenges in their academic journey,
               from navigating complex coursework to managing competing demands on their time.
@@ -127,7 +130,7 @@ const Home = () => {
       </section>
       <section id="faculty" className="vh-100 px-5 border-2 border-top">
 
-        <h2 className="text-center fw-bolder fst-italic">Faculty and Admin</h2>
+
         <div className="row justify-content-evenly">
 
           <div className="col-6">
@@ -135,7 +138,9 @@ const Home = () => {
           </div>
 
           <div className="col-6 align-self-center">
-
+            <br />
+            <h2 className="text-center fw-bolder fst-italic">Faculty and Admin</h2>
+            <br />
             <p>Our student assistant system is not only designed to help students succeed,
               but also to support faculty and administrators in their roles. We understand
               that faculty and administrators play a critical role in shaping the academic

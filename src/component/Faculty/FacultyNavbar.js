@@ -45,8 +45,8 @@ const FacultyNavbar = () => {
                 <li><NavLink activeClassName="is-active" className="btn btn-outline-light border-0 fw-bold fst-italic" to="/faculty/Mock">Mock interview</NavLink></li>
                 {/* <li><NavLink activeClassName="is-active" className="btn btn-outline-light border-0 fw-bold fst-italic" to="/faculty/Selflearn">Self-learning</NavLink></li> */}
                 <li><NavLink activeClassName="is-active" className="btn btn-outline-light border-0 fw-bold fst-italic" to="/faculty/Notifications">Notification</NavLink></li>
-                <li><NavLink activeClassName="is-active" className="btn btn-outline-light border-0 fw-bold fst-italic" to="/faculty/Attendance">Student Attendance</NavLink></li>
-                <li><NavLink activeClassName="is-active" className="btn btn-outline-light border-0 fw-bold fst-italic" to="/faculty/Performance">Academic Performance</NavLink></li>
+                <li><NavLink activeClassName="is-active" className="btn btn-outline-light border-0 fw-bold fst-italic" to="/faculty/Attendance">Give Attendance</NavLink></li>
+                <li><NavLink activeClassName="is-active" className="btn btn-outline-light border-0 fw-bold fst-italic" to="/faculty/Performance">Student Performance</NavLink></li>
               </ul>
               <div className="d-flex align-items-center" >
 

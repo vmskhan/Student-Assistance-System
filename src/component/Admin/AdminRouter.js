@@ -1,11 +1,13 @@
 import { Outlet } from "react-router-dom"
 import AdminNavbar from "./AdminNavbar";
+import Footer from "../Common/Footer";
 
-const AdminRouter=()=>{
-    return(
+const AdminRouter = () => {
+    return (
         <div>
-            <AdminNavbar/>
-            <Outlet/>
+            <AdminNavbar />
+            <Outlet />
+            <Footer />
         </div>
     )
 }

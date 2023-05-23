@@ -62,12 +62,12 @@ const AdminCoursesComponent = () => {
                 <div className="row my-3">
                     <h4 className="col my-4">Courses</h4>
                     <div className="row mb-3">
-                        <p className="col">Courses available,</p>
+                        <p className="col"></p>
                         <button className="btn btn-success col-2 mx-3" data-bs-toggle="modal" data-bs-target="#addCourseModal" ><i className="bi bi-plus-lg"></i> Add Course</button>
                     </div>
                 </div>
 
-                <table className="table table-bordered  border-dark " style={{ border: "2px solid black" }}>
+                <table className="table table-bordered align-middle text-center border-dark " style={{ border: "2px solid black" }}>
                     <thead>
                         <tr>
                             <th scope="col">S.No.</th>

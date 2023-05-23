@@ -23,7 +23,7 @@ const AdminStudentAccounts = () => {
     }
 
     return (
-        <div>
+        <div className="">
             <div className="container">
                 <h1 className="text-center">Student profiles</h1>
                 <div className="row m-5">
@@ -37,7 +37,7 @@ const AdminStudentAccounts = () => {
                     </div>
                 </div>
 
-                <table className="table table-bordered  border-dark " style={{ border: "2px solid black" }}>
+                <table className="table table-bordered align-middle text-center border-dark " style={{ border: "2px solid black" }}>
                     <thead>
                         <tr>
                             <th scope="col">S.No.</th>
@@ -89,6 +89,7 @@ const AdminStudentAccounts = () => {
                 </table>
 
             </div>
+            <section className=""><br/><br/><br/><br/><br/><br/><br/><br/> </section>
         </div>
     );
 }

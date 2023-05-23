@@ -130,7 +130,7 @@ const deleteHandler=(id)=>{
                      }
                     </div>               
             </div>
-            
+            <section className=""><br/><br/><br/><br/><br/><br/><br/><br/> </section>
 
 {/* <!-- Modal --> */}
 <div className="modal fade" id="newNotesModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

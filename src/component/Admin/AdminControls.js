@@ -285,6 +285,7 @@ const getAdminControls=async()=>{
                 </div>
             </div>
         </div>
+        <section className=""><br/><br/><br/><br/><br/><br/><br/><br/> </section>
     </div>
     );
 }

@@ -59,6 +59,7 @@ const StudentNotifications=()=>{
                     </div>
                 </div>
               </section>
+              <section className=""><br/><br/><br/><br/><br/><br/><br/><br/> </section>
         </div>
     )
 }

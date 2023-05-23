@@ -25,6 +25,7 @@ const StudentPerformance=()=>{
             <br/>
             <button onClick={callPythonApi}>Call python api</button>
           </section>
+          <section className=""><br/><br/><br/><br/><br/><br/><br/><br/> </section>
         </div>
     )
 }

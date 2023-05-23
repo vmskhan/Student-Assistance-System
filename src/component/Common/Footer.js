@@ -33,33 +33,33 @@ const Footer = (props) => {
                     <div className="d-flex justify-content-around ">
                         <div >
                             <ul className="list-group list-group-flush">
-                                <li className="list-group-item"><Link to="/" className="text-dark fs-5 fw-bold text-decoration-none"><i className="bi bi-filter-right"></i>Home</Link></li>
-                                <li className="list-group-item ps-4">Students</li>
-                                <li className="list-group-item ps-4">Faculty</li>
-                                <li className="list-group-item ps-4">Admin</li>
+                                <li className="list-group-item bg-transparent"><Link to="/" className="text-dark fs-5 fw-bold text-decoration-none"><i className="bi bi-filter-right"></i>Home</Link></li>
+                                <li className="list-group-item ps-4 bg-transparent">Students</li>
+                                <li className="list-group-item ps-4 bg-transparent">Faculty</li>
+                                <li className="list-group-item ps-4 bg-transparent">Admin</li>
                             </ul>
                         </div>
                         <div>
                             <ul className="list-group list-group-flush">
-                                <li className="list-group-item"><Link to="/#aboutUs" onClick={() => handleScroll(props.aboutUsRef)} className="text-dark fs-5 fw-bold text-decoration-none"><i className="bi bi-filter-right"></i>About us</Link></li>
-                                <li className="list-group-item ps-4">Why SAS</li>
-                                <li className="list-group-item ps-4">About SAS</li>
+                                <li className="list-group-item bg-transparent"><Link to="/#aboutUs" onClick={() => handleScroll(props.aboutUsRef)} className="text-dark fs-5 fw-bold text-decoration-none"><i className="bi bi-filter-right"></i>About us</Link></li>
+                                <li className="list-group-item ps-4 bg-transparent">Why SAS</li>
+                                <li className="list-group-item ps-4 bg-transparent">About SAS</li>
                                 {/* <li className="list-group-item ps-4"></li> */}
                             </ul>
                         </div>
                         <div>
                             <ul className="list-group list-group-flush">
-                                <li className="list-group-item"><Link to="/#students" onClick={() => handleScroll(props.studentsRef)} className="text-dark fs-5 fw-bold text-decoration-none"><i className="bi bi-filter-right"></i>Students</Link></li>
-                                <li className="list-group-item ps-4">SAS for students</li>
-                                <li className="list-group-item ps-4">Student signup</li>
+                                <li className="list-group-item bg-transparent"><Link to="/#students" onClick={() => handleScroll(props.studentsRef)} className="text-dark fs-5 fw-bold text-decoration-none"><i className="bi bi-filter-right"></i>Students</Link></li>
+                                <li className="list-group-item ps-4 bg-transparent">SAS for students</li>
+                                <li className="list-group-item ps-4 bg-transparent">Student signup</li>
                                 {/* <li className="list-group-item ps-4">I</li> */}
                             </ul>
                         </div>
                         <div>
                             <ul className="list-group list-group-flush">
-                                <li className="list-group-item"><Link to="/#faculty" onClick={() => handleScroll(props.facultyRef)} className="text-dark fs-5 fw-bold text-decoration-none"><i className="bi bi-filter-right"></i>Faculty</Link></li>
-                                <li className="list-group-item ps-4">SAS for faculty</li>
-                                <li className="list-group-item ps-4">Faculty signup</li>
+                                <li className="list-group-item bg-transparent"><Link to="/#faculty" onClick={() => handleScroll(props.facultyRef)} className="text-dark fs-5 fw-bold text-decoration-none"><i className="bi bi-filter-right"></i>Faculty</Link></li>
+                                <li className="list-group-item ps-4 bg-transparent">SAS for faculty</li>
+                                <li className="list-group-item ps-4 bg-transparent">Faculty signup</li>
                                 {/* <li className="list-group-item ps-4">Admin</li> */}
                             </ul>
                         </div>

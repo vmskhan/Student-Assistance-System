@@ -223,6 +223,7 @@ const StudentProfile=()=>{
             </div>
         </div>
         </div>
+        <section className=""><br/><br/><br/><br/><br/><br/><br/><br/> </section>
     </>
     }</>
     );

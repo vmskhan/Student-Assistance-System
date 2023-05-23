@@ -82,6 +82,7 @@ export const StudentNotes = () => {
                      }
                     </div>               
             </div>
+            <section className=""><br/><br/><br/><br/><br/><br/><br/><br/> </section>
         </div>
     )
 }

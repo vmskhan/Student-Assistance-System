@@ -7,6 +7,7 @@ const StudentAttendance=()=>{
             </div>
             
           </section>
+          <section className=""><br/><br/><br/><br/><br/><br/><br/><br/> </section>
 </div>
     );
 

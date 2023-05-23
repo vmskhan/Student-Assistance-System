@@ -294,7 +294,7 @@ const AdminTimetables = () => {
                             </div>
                         </div>
                     </div>
-
+                    <section className=""><br/><br/><br/><br/><br/><br/><br/><br/> </section>
                     {/* <!--Add TimeTable Modal --> */}
                     <div className="modal fade" id="addTimeTableModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div className="modal-dialog">

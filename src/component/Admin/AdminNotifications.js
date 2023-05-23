@@ -97,7 +97,7 @@ const AdminNotifications = () => {
                     </div>
                 </div>
             </section>
-
+            <section className=""><br/><br/><br/><br/><br/><br/><br/><br/> </section>
             {/* <!-- Modal --> */}
             <div className="modal fade" id="newNotificationModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog">

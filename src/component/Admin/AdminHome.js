@@ -79,7 +79,7 @@ const AdminHome=()=>{
                     legendToggle
                     />
                 </section> */}
-                <section>
+                <section className="">
                 {/* <h1>cards</h1> */}
                 <div className="row justify-content-around">
                 { cardData.map((card)=>{
@@ -99,7 +99,7 @@ const AdminHome=()=>{
             }
             </div>
                 </section>
-                
+                <section className=""><br/><br/><br/><br/><br/><br/><br/><br/> </section>
             </div>
     );
 }

@@ -121,6 +121,7 @@ const FacultyPerformance = () => {
                         </table>
                     </div>
                 </div>
+                <section className=""><br/><br/><br/><br/><br/><br/><br/><br/> </section>
             </>
         }
     </>);

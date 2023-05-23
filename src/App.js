@@ -17,7 +17,6 @@ import StudentHome from './component/Student/StudentHome';
 import StudentNotes from './component/Student/StudentNotes';
 import StudentMockInterview from './component/Student/StudentMockInterview';
 import StudentPerformance from './component/Student/StudentPerformance';
-import StudentSelfLearn from './component/Student/StudentSelfLearn';
 import StudentNotifications from './component/Student/StudentNotifications';
 import StudentAttendance from './component/Student/StudentAttendance';
 import StudentProfile from './component/Student/StudentProfile';
@@ -80,7 +79,6 @@ useEffect(()=>{
             <Route path="Notes" element={<StudentNotes />} exact />
             <Route path="Mock" element={<StudentMockInterview />} exact />
             <Route path="Performance" element={<StudentPerformance />} exact />
-            <Route path="Selflearn" element={<StudentSelfLearn />} exact />
             <Route path="Notifications" element={<StudentNotifications />} exact />
             <Route path="Attendance" element={<StudentAttendance />} exact />
             <Route path="Profile" element={<StudentProfile />} exact />

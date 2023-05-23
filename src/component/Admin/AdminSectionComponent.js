@@ -76,7 +76,7 @@ const AdminSectionComponent = () => {
                     </div>
                 </div>
 
-                <table className="table table-bordered  border-dark " style={{ border: "2px solid black" }}>
+                <table className="table table-bordered align-middle text-center border-dark " style={{ border: "2px solid black" }}>
                     <thead>
                         <tr>
                             <th scope="col">S.No.</th>

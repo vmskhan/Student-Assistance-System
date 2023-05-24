@@ -198,6 +198,24 @@ const updateStudentAttendanceInSection =asyncHandler( async(req,res) =>{
 });
 
 
+const getMarksWithSectionId=asyncHandler(async(req,res)=>{
+  let mySection=await Section.findById(req.body.sectionId);
+  let studMarks=mySection?.marks?.filter((sec)=>sec.studentId===req.body.studentId)?.[0];
+  if(studMarks)
+  {
+    res.status(200).json({
+      'Marks':studMarks
+    });
+  }
+  else
+  {
+    res.status(400).json({
+      'Marks':{},
+      'message':'not found'
+    })
+  }
+
+});
 
 
 
@@ -209,4 +227,5 @@ module.exports = {
   getAllSections,
   updateStudentMarksInSection,
   updateStudentAttendanceInSection,
+  getMarksWithSectionId,
 }

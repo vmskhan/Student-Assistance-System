@@ -81,3 +81,17 @@ export const updateStudentProfile=(userData)=>{
         await reqHandler();
     }
 }
+
+export const getMarksForStudent=()=>{
+    return async(dispatch)=>{
+            const reqHandler=async()=>{
+            proxyAxios.get("/api/users/sections/marks")
+            .then((res)=>res.data)
+            .then((data)=>{
+                console.log(data);
+                dispatch(studentActions.setMarks(data.Marks));
+            })
+        }
+        await reqHandler();
+    }
+}

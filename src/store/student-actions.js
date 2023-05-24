@@ -76,7 +76,7 @@ export const updateStudentProfile = (userData) => {
                 .then((data) => {
                     console.log(data);
                     dispatch(getProfileForStudent(userData.studentId));
-                    alert('updated sucessfully');
+                    alert('student profile updated sucessfully');
                 })
         }
         await reqHandler();

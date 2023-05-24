@@ -180,3 +180,17 @@ export const updateParticularStudentMarks=(marksData)=>{
         await reqHandler();
     }
 }
+
+export const updateParticularStudentAttendance=(attData)=>{
+    return async(dispatch)=>{
+            const reqHandler=async()=>{
+            proxyAxios.post("/api/faculty/sections/attendance",attData)
+            .then((res)=>res.data)
+            .then((data)=>{
+                console.log(data)
+                dispatch(getSelectedSection(attData.sectionId));
+            })
+        }
+        await reqHandler();
+    }
+}

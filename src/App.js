@@ -38,6 +38,7 @@ import AdminInstitutionInfo from './component/Admin/AdminInstitutionInfo';
 import AdminFacultyAccounts from './component/Admin/AdminFacultyAccounts';
 import AdminStudentAccounts from './component/Admin/AdminStudentAccounts';
 import FacultyPerformance from './component/Faculty/FacultyPerformance';
+import FacultyAttendance from './component/Faculty/FacultyAttendance';
 
 
 const App = () => {
@@ -90,7 +91,7 @@ useEffect(()=>{
             <Route path="Mock" element={<StudentMockInterview />} exact />
             <Route path="Performance" element={<FacultyPerformance />} exact />
             <Route path="Notifications" element={<FacultyNotifications />} exact />
-            <Route path="Attendance" element={<StudentAttendance />} exact />
+            <Route path="Attendance" element={<FacultyAttendance />} exact />
             <Route path="StudentDetails" element={<StudentAttendance />} exact />
             <Route path="Profile" element={<FacultyProfile />} exact />
           </Route>

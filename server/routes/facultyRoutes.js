@@ -4,7 +4,7 @@ const { getFacultyNotifications } = require('../controllers/NotificationControll
 const { getFacultyDetails, updateFacultyDetails, getAllStudentDetailsWithSectionId, getAllStudentAccountsWithSectionId } = require('../controllers/userController');
 const {getAllDepartments}=require('./../controllers/DepartmentController');
 const { getTimeTableForFaculty } = require('../controllers/TimeTableController');
-const {getAllSections, getSectionWithId, updateStudentMarksInSection}=require("../controllers/SectionController");
+const {getAllSections, getSectionWithId, updateStudentMarksInSection, updateStudentAttendanceInSection}=require("../controllers/SectionController");
 const { getCourseWithDeptId } = require('../controllers/CourseController');
 const { getAllSubjectsWithDeptId } = require('../controllers/SubjectController');
 
@@ -21,6 +21,7 @@ router.route('/timeTable/:facultyId').get(getTimeTableForFaculty);
 router.route('/sections').get(getAllSections);
 router.route('/sections/:sectionId').get(getSectionWithId);
 router.route('/sections/marks').post(updateStudentMarksInSection);
+router.route('/sections/attendance').post(updateStudentAttendanceInSection);
 router.route('/courses/:deptId').get(getCourseWithDeptId);
 router.route('/subjects/:deptId').get(getAllSubjectsWithDeptId);
 router.route('/studentProfiles/:sectionId').get(getAllStudentDetailsWithSectionId);

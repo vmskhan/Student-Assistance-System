@@ -26,10 +26,10 @@ const StudentRegister = () => {
         e.preventDefault();
 
         if (confirmPassword !== password) {
-            setMessage("Passwords do not match");
+            setError("Passwords do not match");
         }
         else {
-            setMessage("");
+            setError("");
             //     const config={
             //     headers:{
             //         "Content-type": "application/json",
@@ -59,9 +59,9 @@ const StudentRegister = () => {
                 })
                 .catch((error) => {
                     setLoading(false);
-                    // setError(error.response.data.message);
+                    setError(error.response.data.message);
                     alert(error.response.data.message);
-                    setError(error);
+                    // setError(error);
                 });
         }
     };
@@ -124,7 +124,7 @@ const StudentRegister = () => {
                                 <input className="btn bg-success text-white btn-sm px-5" type="submit" />
                             </div>
                             <div className="my-2 text-center text-danger">
-                                {/* user already exists */}
+
                             </div>
                             <div className="mt-3 text-center">
                                 <div className="text-secondary mb-2"> OR</div>
